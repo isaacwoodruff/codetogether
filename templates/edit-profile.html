@@ -1,0 +1,86 @@
+{% extends 'base.html' %} {% block content %}
+    <div class="row center">
+        <h2>Edit Profile</h2>
+        <form action="" method="POST"  class="col s12">
+        <div class="col s5">
+            <div class="input-field">
+                <label for="first_name">First Name</label>
+                <input id="first_name" name="first_name" type="text" class="validate">
+            </div>
+            
+            <div class="input-field">
+                <label for="last_name">Last Name</label>
+                <input id="last_name" name="last_name" type="text" class="validate">
+            </div>
+            
+            <div class="input-field">
+                <label for="email">Email Address</label>
+                <input id="email" name="email" type="email" class="validate">
+            </div>
+            
+            <div class="input-field">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" class="validate">
+            </div>
+            
+            <div class="input-field">
+                <label for="description">Job Title/Short Decription</label>
+                <input id="description" name="description" type="text" class="validate">
+            </div>
+            
+            <div class="input-field">
+                <label for="country">Country Of Residence</label>
+                <input id="country" name="country" type="text" class="validate">
+            </div>
+            
+            <div class="input-field">
+                <select multiple>
+                    <option value="" disabled selected>Choose your options</option>
+                    <option value="find-mentor">Find a mentor</option>
+                    <option value="become-mentor">Become a mentor</option>
+                    <option value="pair-program">Pair program</option>
+                </select>
+                <label>Looking to:</label>
+            </div>
+        </div>
+        <div class="col s2"></div>
+        <div class="col s5">
+            <div class="input-field">
+                <label for="github">Github</label>
+                <input id="github" name="github" type="text">
+            </div>
+            
+            <div class="input-field">
+                <label for="linkedin">LinkedIn</label>
+                <input id="linkedin" name="linkedin" type="text">
+            </div>
+            
+            <div class="input-field">
+                <label for="skype">Skype</label>
+                <input id="skype" name="skype" type="text">
+            </div>
+            
+            <div class="input-field">
+                <label for="discord">Discord</label>
+                <input id="discord" name="discord" type="text">
+            </div>
+            
+            <div class="input-field">
+                <label for="avatar">Avatar URL</label>
+                <input id="avatar" name="avatar" type="text">
+            </div>
+            
+            <div class="input-field">
+                <label for="expertise">Expertise</label>
+                <input id="expertise" name="expertise" type="text" class="materialize-textarea">
+            </div>
+            
+            <div class="input-field">
+                <label for="about">About Me</label>
+                <input id="about" name="about" type="text" class="materialize-textarea">
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Save</button>
+        </form>
+    </div>
+{% endblock %}
