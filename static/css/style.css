@@ -5,3 +5,20 @@
 .margin-top-50 {
     margin-top: 50px;
 }
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.current {
+    display: inherit;
+}
+
+.tab-link.current {
+    background-color: #00bcd4;
+}
+
+.tabs-nav {
+    border-radius: 10px;
+    overflow: hidden;
+}
