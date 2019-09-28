@@ -6,6 +6,10 @@
     margin-top: 50px;
 }
 
+.margin-left-50 {
+    margin-left:  50px;
+}
+
 .tab-content {
     display: none;
 }
