@@ -37,7 +37,7 @@ def update_profile():
             'avatar': request.form.get('avatar'),
             'about': request.form.get('about'),
             'expertise': request.form.get('expertise').strip().split(","),
-            'looking_to.$[]': request.form.get('looking_to'),
+            'looking_to': request.form.getlist('looking_to'),
             'contact.email':request.form.get('email'),
             'contact.skype':request.form.get('skype'),
             'contact.github':request.form.get('github'),
