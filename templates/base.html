@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
 </head>
@@ -15,7 +16,7 @@
             <div class="nav-wrapper cyan">
                 <a href="{{url_for('index')}}" class="brand-logo margin-left-50">Code Together</a>
                 <ul class="right">
-                    <li><a href="#">Mentors</a></li>
+                    <li><a href="{{url_for('mentors')}}">Mentors</a></li>
                     <li><a href="#">Pair Programmers</a></li>
                     <li><a href="#">Login/Register</a></li>
                 </ul>

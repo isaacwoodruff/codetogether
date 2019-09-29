@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+ 
+<div class="row center">
+    <h3>Mentors</h3>
+    
+    <div class="input-field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" class="validate">
+    </div>
+    
+    <div class="input-field">
+        <label for="description">Job Title/Short Description</label>
+        <input id="description" name="description" type="text" class="validate">
+    </div>
+    
+    <div class="input-field">
+        <label for="expertise">Expertise</label>
+        <input id="expertise" name="expertise" type="text" class="validate">
+    </div>
+    
+    <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Search</button>
+</div>
+
+{% endblock %}
