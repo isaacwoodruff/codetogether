@@ -16,11 +16,12 @@ def index():
 
 @app.route('/edit-profile')
 def edit_profile():
-    return render_template('edit-profile.html')
+    user = mongo.db.users.find_one({u"_id": ObjectId('5d84afe31c9d440000f48258')})
+    return render_template('edit-profile.html', user=user)
     
-@app.route('/user/<username>')
-def user_profile(username):
-    user = mongo.db.users.find_one({u"_id": ObjectId(username)})
+@app.route('/user/<user_id>')
+def user_profile(user_id):
+    user = mongo.db.users.find_one({u"_id": ObjectId(user_id)})
     return render_template('user_profile.html', user=user)
     
 if __name__ == '__main__':

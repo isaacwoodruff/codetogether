@@ -1,9 +1,17 @@
+body {
+    background: lavender;
+}
+
 .profile-img-max-width {
     max-width: 256px;
 }
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+#about {
+    padding-bottom: 0;
 }
 
 .margin-top-50 {
