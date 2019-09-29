@@ -1,27 +1,27 @@
 {% extends 'base.html' %} {% block content %}
     
     <div class="row center">
-        <img src="https://image.flaticon.com/icons/svg/180/180665.svg" class="z-depth-4 circle profile-img-max-width">
+        <img src="{{ user.avatar }}" class="z-depth-4 circle profile-img-max-width">
         <h4>{{ user.first_name.capitalize()  }} {{ user.last_name.capitalize()  }}</h4>
         <p>{{ user.description.title() }}</p>
     </div>
         
     <div class="row center z-depth-3 tabs-nav">
-        <div class="col s3 tab-link current" data-tab="profile">
+        <div class="col s3 tab-link current cursor-pointer" data-tab="profile">
             <h5>Profile</h5>
         </div>
-        <div class="col s3 tab-link" data-tab="expertise">
+        <div class="col s3 tab-link cursor-pointer" data-tab="expertise">
             <h5>Expertise</h5>
         </div>
-        <div class="col s3 tab-link" data-tab="reviews">
+        <div class="col s3 tab-link cursor-pointer" data-tab="reviews">
             <h5>Reviews</h5>
         </div>
-        <div class="col s3  tab-link" data-tab="contact">
+        <div class="col s3  tab-link cursor-pointer" data-tab="contact">
             <h5>Contact</h5>
         </div>
     </div>
     
-    <div class="center margin-top-50">
+    <div class="center  margin-top-50">
         <div id="profile" class="tab-content current">
             <h3>Profile</h3>
             <div class="row margin-top-50">
@@ -29,47 +29,64 @@
                     <h5>About Me</h5>
                 </div>
                 <div class="col s6 left-align">
-                    <h6>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                    magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                    quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                    ut aliquip ex ea commodo consequat.</h6>
+                    <h6>{{ user.about }}</h6>
                 </div>
             </div>
-            
+    
             <div class="row">
                 <div class="col s4 right-align">
                     <h5>Looking to</h5>
                 </div>
                 <div class="col s6 left-align">
                     <ul>
-                        <li>Mentor</li>
-                        <li>Be mentored</li>
-                        <li>Pair program</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col s4 right-align">
-                    <h5>Offering</h5>
-                </div>
-                <div class="col s6 left-align">
-                    <ul>
-                        <li>Mentorship</li>
-                        <li>Pair program</li>
+                        {% for item in user.looking_to %}
+                        <li>{{ item.capitalize() }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
         <div id="expertise" class="tab-content">
             <h3>Expertise</h3>
+            <div class="row margin-top-50">
+                <div class="col s6 right-align">
+                    <h5>Expertise</h5>
+                </div>
+                <div class="col s6 left-align">
+                    <ul>
+                        {% for item in user.expertise %}
+                        <li>{{ item.capitalize() }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
         <div id="reviews" class="tab-content">
             <h3>Review</h3>
+            <div class="row margin-top-50">
+                
+            </div>
         </div>
         <div id="contact" class="tab-content">
             <h3>Contact</h3>
+            <div class="row margin-top-50">
+                <div class="col s6 right-align">
+                    <ul>
+                        <li>GitHub</li>
+                        <li>LinkedIn</li>
+                        <li>Discord</li>
+                        <li>Skype</li>
+                    </ul>
+                </div>
+                <div class="col s6 left-align">
+                    <ul>
+                        <li><a href="{{ user.contact.github }}">{{ user.contact.github }}</a></li>
+                        <li><a href="{{ user.contact.linkedin }}">{{ user.contact.linkedin }}</a></li>
+                        <li><a href="{{ user.contact.discord }}">{{ user.contact.discord }}</a></li>
+                        <li>{{ user.contact.skype }}</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     
