@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
     <div class="row center">
         <h2>Edit Profile</h2>
-        <form action="" method="POST"  class="col s12">
+        <form action="{{ url_for('update_profile') }}" method="POST"  class="col s12">
         <div class="col s5">
             <div class="input-field">
                 <label for="first_name">First Name</label>
@@ -29,7 +29,7 @@
             </div>
             
             <div class="input-field">
-                <select multiple>
+                <select multiple name="looking_to">
                     <option value="" disabled selected>Choose your options</option>
                     {% for item in user.looking_to %}
                         {% if "find a mentor" == item %}
@@ -73,14 +73,12 @@
             
             <div class="input-field">
                 <label for="expertise">Expertise</label>
-                <input id="expertise" name="expertise" type="text" class="materialize-textarea" value="{% for item in user.expertise -%}
-                        {{ item }},
-                        {%- endfor %}">
+                <input id="expertise" name="expertise" type="text" class="materialize-textarea" value="{{ ','.join(user.expertise) }}">
             </div>
         </div>
         <div class="input-field col s12">
             <label for="about">About Me</label>
-            <textarea id="about" class="materialize-textarea padding-0" data-length="500">{{ user.about }}</textarea>
+            <textarea id="about" name="about" class="materialize-textarea padding-0" data-length="500">{{ user.about }}</textarea>
         </div>
         <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Save</button>
         </form>
