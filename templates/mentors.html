@@ -23,12 +23,12 @@
 
 <div class="row center">
     {% for user in users %}
-    <div class="valign-wrapper hoverable">
-        <div class="col s4 right-align">
+    <div class="valign-wrapper hoverable border-radius-15 margin-top-50 col s12 l6">
+        <div class="col s2 m3 right-align">
             <img src="{{ user.avatar }}" class="img-max-width-64 z-depth-2 circle">
         </div>
     
-        <div class="col s8 left-align profile-preview">
+        <div class="col s10 m9 left-align profile-preview">
             <h5>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h5>
             <p class="truncate">{{ user.about }}</p>
             {% for item in user.expertise[-5:] %}

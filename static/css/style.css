@@ -10,13 +10,17 @@ body {
     max-width: 64px;
 }
 
-.profile-preview {
-    overflow: hidden;
-    max-height: 115px;
+.border-radius-15 {
+    border-radius: 15px;
 }
 
 .display-inline-block {
     display: inline-block;
+}
+
+.profile-preview {
+    overflow: hidden;
+    max-height: 115px;
 }
 
 .cursor-pointer {
