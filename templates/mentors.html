@@ -26,10 +26,10 @@
     {% for user in users %}
     <div class="valign-wrapper hoverable border-radius-15 margin-top-50 col s12 l6">
         <div class="col s2 m3 right-align">
-            <img src="{{ user.avatar }}" class="img-max-width-64 z-depth-2 circle">
+            <a href="{{ url_for('user_profile', user_id=user._id) }}"><img src="{{ user.avatar }}" class="img-max-width-64 z-depth-2 circle"></a>
         </div>
         <div class="col s10 m9 left-align profile-preview">
-            <h5>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h5>
+            <a href="{{ url_for('user_profile', user_id=user._id) }}"><h5>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h5></a>
             <p class="truncate">{{ user.about }}</p>
             {% for item in user.expertise[-5:] %}
             <a href="#" class="truncate display-inline-block">{ {{ item }} } </a>
