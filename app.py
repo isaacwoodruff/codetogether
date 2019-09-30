@@ -16,7 +16,8 @@ def index():
     
 @app.route('/mentors')
 def mentors():
-    return render_template('mentors.html')
+    users = mongo.db.users.find({"looking_to.1": "become a mentor"})
+    return render_template('mentors.html', users=users)
 
 @app.route('/edit_profile')
 def edit_profile():

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
     
     <div class="row center">
-        <img src="{{ user.avatar }}" class="z-depth-4 circle profile-img-max-width">
+        <img src="{{ user.avatar }}" class="z-depth-4 circle img-max-width-256">
         <h4>{{ user.first_name.capitalize()  }} {{ user.last_name.capitalize()  }}</h4>
         <p>{{ user.description.title() }}</p>
     </div>

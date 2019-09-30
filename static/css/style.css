@@ -2,8 +2,21 @@ body {
     background: lavender;
 }
 
-.profile-img-max-width {
+.img-max-width-256 {
     max-width: 256px;
+}
+
+.img-max-width-64 {
+    max-width: 64px;
+}
+
+.profile-preview {
+    overflow: hidden;
+    max-height: 115px;
+}
+
+.display-inline-block {
+    display: inline-block;
 }
 
 .cursor-pointer {

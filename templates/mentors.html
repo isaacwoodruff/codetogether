@@ -21,4 +21,22 @@
     <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Search</button>
 </div>
 
+<div class="row center">
+    {% for user in users %}
+    <div class="valign-wrapper hoverable">
+        <div class="col s4 right-align">
+            <img src="{{ user.avatar }}" class="img-max-width-64 z-depth-2 circle">
+        </div>
+    
+        <div class="col s8 left-align profile-preview">
+            <h5>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h5>
+            <p class="truncate">{{ user.about }}</p>
+            {% for item in user.expertise[-5:] %}
+            <a href="#" class="truncate display-inline-block">{ {{ item }} } </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
