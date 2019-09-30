@@ -9,14 +9,38 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 
 mongo = PyMongo(app)
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
     
+@app.route('/mentors/search', methods=["GET","POST"])
+def mentors_search():
+    if request.method == 'POST':
+        name = request.form.get('name').split(' ', 2)
+        expertise = request.form.get('expertise').strip().split(",")
+        print(expertise)
+        if len(name) == 2:
+            users = mongo.db.users.find({
+                'looking_to.1': "become a mentor",
+                'first_name':name[0],
+                'last_name':name[1],
+                'expertise': { "$all": expertise }
+            })
+        else:
+            users = mongo.db.users.find(
+                {"$and" :
+                    [{"$or":
+                        [{'first_name':name[0]},
+                        {'expertise': { "$all": expertise }}
+                    ]},
+                    {'looking_to.1': "become a mentor"}]
+                })
+        return render_template('mentors.html', users=users)
+    return render_template('mentors.html')
+    
 @app.route('/mentors')
 def mentors():
-    users = mongo.db.users.find({"looking_to.1": "become a mentor"})
+    users = mongo.db.users.find({'looking_to.1': "become a mentor"})
     return render_template('mentors.html', users=users)
 
 @app.route('/edit_profile')
