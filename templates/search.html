@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
  
 <div class="row center">
-    <h3>Mentors</h3>
+    <h3>{{ title }}</h3>
     <form action="{{ url_for('mentors_search') }}" method="POST">
         <div class="input-field">
             <label for="name">Name</label>

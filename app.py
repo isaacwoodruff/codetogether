@@ -15,17 +15,22 @@ def index():
     
 @app.route('/mentors/search', methods=["GET","POST"])
 def mentors_search():
+    title = "Mentors"
     if request.method == 'POST':
         name = request.form.get('name').split(' ', 2)
         expertise = request.form.get('expertise').strip().split(",")
-        print(expertise)
         if len(name) == 2:
-            users = mongo.db.users.find({
-                'looking_to.1': "become a mentor",
-                'first_name':name[0],
-                'last_name':name[1],
-                'expertise': { "$all": expertise }
-            })
+            users = mongo.db.users.find(
+                {"$and" :
+                    [{"$or":
+                        [{"$and" :
+                            [{'first_name':name[0]},
+                            {'last_name':name[1]}]
+                        },
+                        {'expertise': { "$all": expertise }}]
+                    },
+                    {'looking_to': {"$in":["become a mentor"]}}],
+                })
         else:
             users = mongo.db.users.find(
                 {"$and" :
@@ -33,15 +38,52 @@ def mentors_search():
                         [{'first_name':name[0]},
                         {'expertise': { "$all": expertise }}
                     ]},
-                    {'looking_to.1': "become a mentor"}]
+                    {'looking_to': {"$in":["become a mentor"]}}],
                 })
-        return render_template('mentors.html', users=users)
-    return render_template('mentors.html')
+        return render_template('search.html', users=users, title=title)
+    return render_template('search.html', title=title)
     
 @app.route('/mentors')
 def mentors():
-    users = mongo.db.users.find({'looking_to.1': "become a mentor"})
-    return render_template('mentors.html', users=users)
+    title = "Mentors"
+    users = mongo.db.users.find({'looking_to': {"$in":["become a mentor"]}})
+    return render_template('search.html', users=users, title=title)
+    
+@app.route('/pair_programmers/search', methods=["GET","POST"])
+def pair_programmers_search():
+    title = "Pair Programmers"
+    if request.method == 'POST':
+        name = request.form.get('name').split(' ', 2)
+        expertise = request.form.get('expertise').strip().split(",")
+        if len(name) == 2:
+            users = mongo.db.users.find(
+                {"$and" :
+                    [{"$or":
+                        [{"$and" :
+                            [{'first_name':name[0]},
+                            {'last_name':name[1]}]
+                        },
+                        {'expertise': { "$all": expertise }}]
+                    },
+                    {'looking_to': {"$in":["pair program"]}}],
+                })
+        else:
+            users = mongo.db.users.find(
+                {"$and" :
+                    [{"$or":
+                        [{'first_name':name[0]},
+                        {'expertise': { "$all": expertise }}
+                    ]},
+                    {'looking_to': {"$in":["pair program"]}}],
+                })
+        return render_template('search.html', users=users, title=title)
+    return render_template('search.html', title=title)
+    
+@app.route('/pair_programmers')
+def pair_programmers():
+    title = "Pair Programmers"
+    users = mongo.db.users.find({'looking_to': {"$in":["pair program"]}})
+    return render_template('search.html', users=users, title=title)
 
 @app.route('/edit_profile')
 def edit_profile():
