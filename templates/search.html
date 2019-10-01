@@ -2,7 +2,13 @@
  
 <div class="row center">
     <h3>{{ title }}</h3>
-    <form action="{{ url_for('mentors_search') }}" method="POST">
+    <form action="
+    {% if title == 'Mentors' %}
+        {{ url_for('mentors_search') }}
+    {% else %}
+        {{ url_for('pair_programmers_search') }}
+    {% endif %}
+    " method="POST">
         <div class="input-field">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" class="validate">
