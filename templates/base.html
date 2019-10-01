@@ -16,9 +16,9 @@
             <div class="nav-wrapper cyan">
                 <a href="{{url_for('index')}}" class="brand-logo margin-left-50">Code Together</a>
                 <ul class="right">
-                    <li><a href="{{url_for('mentors')}}">Mentors</a></li>
-                    <li><a href="{{url_for('pair_programmers')}}">Pair Programmers</a></li>
-                    <li><a href="#">Login/Register</a></li>
+                    <li><a href="{{ url_for('mentors') }}">Mentors</a></li>
+                    <li><a href="{{ url_for('pair_programmers') }}">Pair Programmers</a></li>
+                    <li><a href="{{ url_for('login') }}">Login/Register</a></li>
                 </ul>
             </div>
         </nav>
