@@ -20,6 +20,14 @@ lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login'
 
+def connect_current_user_to_database():
+    if current_user.is_authenticated:
+        current_user_object = mongo.db.users.find_one({"contact.email": current_user.email})
+        return current_user_object
+    else:
+        current_user_object = None
+        return current_user_object
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -96,19 +104,23 @@ def pair_programmers():
     return render_template('search.html', users=users, title=title)
 
 @app.route('/edit_profile')
+@login_required
 def edit_profile():
-    user = mongo.db.users.find_one({"_id": ObjectId(current_user._id)})
-    return render_template('edit_profile.html', user=user)
+    current_user_object = connect_current_user_to_database()
+    return render_template('edit_profile.html', user=current_user_object)
     
 @app.route('/user/<user_id>')
+@login_required
 def user_profile(user_id):
     user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
     return render_template('user_profile.html', user=user)
     
 @app.route('/update_profile', methods=["POST"])
+@login_required
 def update_profile():
-    user = mongo.db.users
-    user.update( {'_id': ObjectId("5d9339911c9d440000939ca6")},
+    current_user_object = connect_current_user_to_database()
+    users = mongo.db.users
+    users.update( {'_id': current_user_object["_id"]},
     {
         '$set': {
             'first_name':request.form.get('first_name'),
@@ -156,17 +168,14 @@ class User():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    if current_user.is_authenticated:
-        current_user_object = mongo.db.users.find_one({"contact.email": current_user.email})
-    else:
-        current_user_object = None
+    current_user_object = connect_current_user_to_database()
     if request.method == 'POST' and form.validate_on_submit():
         user = mongo.db.users.find_one({"contact.email": form.email.data})
         if user and User.validate_login(user['password'], form.password.data):
             user_obj = User(user["contact"]["email"])
             login_user(user_obj)
             flash("is logged in successfully", category='success')
-            return redirect(request.args.get("next") or url_for("index"))
+            return redirect(request.args.get("next") or url_for("login"))
         flash("Wrong email or password", category='error')
     return render_template('login.html', title='Login', form=form, current_user_object=current_user_object)
     
