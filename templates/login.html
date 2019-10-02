@@ -15,7 +15,12 @@
                 <div class="form-group">
                     <label class="control-label" for="password">Password</label> {{ form.password }}
                 </div>
-                <button class="btn btn-default" type="submit">Submit</button>
+                {% if title == "Login" %}
+                    <button class="btn btn-default" type="submit">Login</button>
+                    <a href="{{ url_for('register') }}" class="btn btn-default">Register</a>
+                {% else %}
+                    <button class="btn btn-default" type="submit">Register</button>
+                {% endif %}
             </div>
         </form>
         
