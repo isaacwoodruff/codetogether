@@ -109,10 +109,10 @@ def pair_programmers():
     return render_template('search.html', users=users, current_session_user=current_user_object, title=title)
 
 @app.route('/edit_profile')
+@login_required
 def edit_profile():
-    user = mongo.db.users.find_one({"_id": ObjectId('5d94fad81c9d44000048e623')})
     current_user_object = connect_current_user_to_database()
-    return render_template('edit_profile.html', current_session_user=user)
+    return render_template('edit_profile.html', current_session_user=current_user_object)
     
 @app.route('/user/<user_id>')
 @login_required
@@ -122,11 +122,12 @@ def user_profile(user_id):
     return render_template('user_profile.html', user=user, current_session_user=current_user_object)
     
 @app.route('/update_profile', methods=["POST"])
+@login_required
 def update_profile():
     current_user_object = connect_current_user_to_database()
     users = mongo.db.users
     password = request.form.get('password')
-    users.update( {'_id': ObjectId('5d94fad81c9d44000048e623')},
+    users.update( {'_id': current_user_object["_id"]},
     {
         '$set': {
             'first_name':request.form.get('first_name'),
@@ -200,6 +201,35 @@ def load_user(email):
     if not user:
         return None
     return User(user['contact']['email'])
+    
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    current_user_object = connect_current_user_to_database()
+    users = mongo.db.users
+    form = LoginForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        users.insert_one({
+            "contact": { 
+                "email" : form.email.data,
+                'skype': "",
+                'github': "",
+                'linkedin': "",
+                'discord': ""
+            },
+            "password": generate_password_hash(form.password.data),
+            'first_name': "",
+            'last_name': "",
+            'description': "",
+            'avatar': "",
+            'about': "",
+            'expertise': "",
+            'looking_to': "",
+        })
+        user = users.find_one({ "contact.email" : form.email.data })
+        login_user(User(user["contact"]["email"]))
+        flash("is logged in successfully", category='success')
+        return redirect(request.args.get("next") or url_for("edit_profile"))
+    return render_template('login.html', title='Register', form=form, current_session_user=current_user_object)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

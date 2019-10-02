@@ -22,7 +22,7 @@
                         <ul id="nav-dropdown" class="dropdown-content">
                             <li><a href="{{ url_for('user_profile', user_id=current_session_user._id) }}">Profile</a></li>
                             <li><a href="#!">Messages</a></li>
-                            <li><a href="#!">Logout</a></li>
+                            <li><a href="{{ url_for('logout') }}">Logout</a></li>
                         </ul>
                         <li><a class="dropdown-trigger" href="#!" data-target="nav-dropdown"><i id="user-profile-icon" class="material-icons center">person_pin</i></a></li>
                     {% else %}

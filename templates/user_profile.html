@@ -21,7 +21,7 @@
         </div>
     </div>
     
-    <div class="center  margin-top-50">
+    <div class="row center  margin-top-50">
         <div id="profile" class="tab-content current">
             <h3>Profile</h3>
             <div class="row margin-top-50">
@@ -88,6 +88,9 @@
                 </div>
             </div>
         </div>
+        {% if current_user.is_authenticated and user._id == current_session_user._id %}
+            <a href="{{ url_for('edit_profile') }}" class="btn waves-effect waves-light btn-large">Edit Profile</a>
+        {% endif %}
     </div>
     
 {% endblock %}
