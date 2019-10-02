@@ -20,6 +20,7 @@
         </form>
         
         {% if get_flashed_messages() %}
+            {{ current_user_object.first_name.capitalize() }}
             {{ get_flashed_messages()[0] }}
         {% endif %}
     </div>

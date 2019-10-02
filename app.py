@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson.json_util import dumps
@@ -54,6 +54,7 @@ def mentors_search():
     return render_template('search.html', title="Mentors")
     
 @app.route('/mentors')
+@login_required
 def mentors():
     title = "Mentors"
     users = mongo.db.users.find({'looking_to': {"$in":["become a mentor"]}})
@@ -96,7 +97,7 @@ def pair_programmers():
 
 @app.route('/edit_profile')
 def edit_profile():
-    user = mongo.db.users.find_one({"_id": ObjectId('5d9339911c9d440000939ca6')})
+    user = mongo.db.users.find_one({"_id": ObjectId(current_user._id)})
     return render_template('edit_profile.html', user=user)
     
 @app.route('/user/<user_id>')
@@ -155,15 +156,19 @@ class User():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if current_user.is_authenticated:
+        current_user_object = mongo.db.users.find_one({"contact.email": current_user.email})
+    else:
+        current_user_object = None
     if request.method == 'POST' and form.validate_on_submit():
         user = mongo.db.users.find_one({"contact.email": form.email.data})
         if user and User.validate_login(user['password'], form.password.data):
-            user_obj = User(dumps([user['_id']]))
+            user_obj = User(user["contact"]["email"])
             login_user(user_obj)
-            flash("Logged in successfully", category='success')
+            flash("is logged in successfully", category='success')
             return redirect(request.args.get("next") or url_for("index"))
         flash("Wrong email or password", category='error')
-    return render_template('login.html', title='Login', form=form)
+    return render_template('login.html', title='Login', form=form, current_user_object=current_user_object)
     
 @app.route('/logout')
 def logout():
@@ -172,10 +177,10 @@ def logout():
     
 @lm.user_loader
 def load_user(email):
-    user = mongo.db.users.find_one({"_id": email})
+    user = mongo.db.users.find_one({"contact.email": email})
     if not user:
         return None
-    return User(user['_id'])
+    return User(user['contact']['email'])
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
