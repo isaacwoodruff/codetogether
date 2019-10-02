@@ -34,6 +34,7 @@ def index():
     return render_template('index.html', current_session_user=current_user_object)
     
 @app.route('/mentors/search', methods=["GET","POST"])
+@login_required
 def mentors_search():
     current_user_object = connect_current_user_to_database()
     if request.method == 'POST':
@@ -72,6 +73,7 @@ def mentors():
     return render_template('search.html', users=users, current_session_user=current_user_object, title=title)
     
 @app.route('/pair_programmers/search', methods=["GET","POST"])
+@login_required
 def pair_programmers_search():
     current_user_object = connect_current_user_to_database()
     if request.method == 'POST':
@@ -102,6 +104,7 @@ def pair_programmers_search():
     return render_template('search.html', current_session_user=current_user_object, title="Pair Programmers")
     
 @app.route('/pair_programmers')
+@login_required
 def pair_programmers():
     current_user_object = connect_current_user_to_database()
     title = "Pair Programmers"
@@ -208,27 +211,30 @@ def register():
     users = mongo.db.users
     form = LoginForm()
     if request.method == 'POST' and form.validate_on_submit():
-        users.insert_one({
-            "contact": { 
-                "email" : form.email.data,
-                'skype': "",
-                'github': "",
-                'linkedin': "",
-                'discord': ""
-            },
-            "password": generate_password_hash(form.password.data),
-            'first_name': "",
-            'last_name': "",
-            'description': "",
-            'avatar': "",
-            'about': "",
-            'expertise': "",
-            'looking_to': "",
-        })
-        user = users.find_one({ "contact.email" : form.email.data })
-        login_user(User(user["contact"]["email"]))
-        flash("is logged in successfully", category='success')
-        return redirect(request.args.get("next") or url_for("edit_profile"))
+        if users.find_one({ "contact.email" : form.email.data}) is None:
+            users.insert_one({
+                "contact": { 
+                    "email" : form.email.data,
+                    'skype': "",
+                    'github': "",
+                    'linkedin': "",
+                    'discord': ""
+                },
+                "password": generate_password_hash(form.password.data),
+                'first_name': "",
+                'last_name': "",
+                'description': "",
+                'avatar': "",
+                'about': "",
+                'expertise': "",
+                'looking_to': "",
+            })
+            user = users.find_one({ "contact.email" : form.email.data })
+            login_user(User(user["contact"]["email"]))
+            flash("is logged in successfully", category='success')
+            return redirect(request.args.get("next") or url_for("edit_profile"))
+        else:
+            flash("Email already registered", category='success')
     return render_template('login.html', title='Register', form=form, current_session_user=current_user_object)
 
 if __name__ == '__main__':
