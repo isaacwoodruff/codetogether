@@ -10,6 +10,10 @@ body {
     max-width: 64px;
 }
 
+#user-profile-icon {
+    font-size: 3rem;
+}
+
 .border-radius-15 {
     border-radius: 15px;
 }

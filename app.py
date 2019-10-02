@@ -30,10 +30,12 @@ def connect_current_user_to_database():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    current_user_object = connect_current_user_to_database()
+    return render_template('index.html', current_session_user=current_user_object)
     
 @app.route('/mentors/search', methods=["GET","POST"])
 def mentors_search():
+    current_user_object = connect_current_user_to_database()
     if request.method == 'POST':
         name = request.form.get('name').split(' ', 2)
         expertise = request.form.get('expertise').strip().split(",")
@@ -58,18 +60,20 @@ def mentors_search():
                     ]},
                     {'looking_to': {"$in":["become a mentor"]}}],
                 })
-        return render_template('search.html', users=users, title="Mentors")
-    return render_template('search.html', title="Mentors")
+        return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+    return render_template('search.html', current_session_user=current_user_object, title="Mentors")
     
 @app.route('/mentors')
 @login_required
 def mentors():
+    current_user_object = connect_current_user_to_database()
     title = "Mentors"
     users = mongo.db.users.find({'looking_to': {"$in":["become a mentor"]}})
-    return render_template('search.html', users=users, title=title)
+    return render_template('search.html', users=users, current_session_user=current_user_object, title=title)
     
 @app.route('/pair_programmers/search', methods=["GET","POST"])
 def pair_programmers_search():
+    current_user_object = connect_current_user_to_database()
     if request.method == 'POST':
         name = request.form.get('name').split(' ', 2)
         expertise = request.form.get('expertise').strip().split(",")
@@ -94,26 +98,28 @@ def pair_programmers_search():
                     ]},
                     {'looking_to': {"$in":["pair program"]}}],
                 })
-        return render_template('search.html', users=users, title="Pair Programmers")
-    return render_template('search.html', title="Pair Programmers")
+        return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
+    return render_template('search.html', current_session_user=current_user_object, title="Pair Programmers")
     
 @app.route('/pair_programmers')
 def pair_programmers():
+    current_user_object = connect_current_user_to_database()
     title = "Pair Programmers"
     users = mongo.db.users.find({'looking_to': {"$in":["pair program"]}})
-    return render_template('search.html', users=users, title=title)
+    return render_template('search.html', users=users, current_session_user=current_user_object, title=title)
 
 @app.route('/edit_profile')
 @login_required
 def edit_profile():
     current_user_object = connect_current_user_to_database()
-    return render_template('edit_profile.html', user=current_user_object)
+    return render_template('edit_profile.html', current_session_user=current_user_object)
     
 @app.route('/user/<user_id>')
 @login_required
 def user_profile(user_id):
+    current_user_object = connect_current_user_to_database()
     user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
-    return render_template('user_profile.html', user=user)
+    return render_template('user_profile.html', user=user, current_session_user=current_user_object)
     
 @app.route('/update_profile', methods=["POST"])
 @login_required
@@ -177,7 +183,7 @@ def login():
             flash("is logged in successfully", category='success')
             return redirect(request.args.get("next") or url_for("login"))
         flash("Wrong email or password", category='error')
-    return render_template('login.html', title='Login', form=form, current_user_object=current_user_object)
+    return render_template('login.html', title='Login', form=form, current_session_user=current_user_object)
     
 @app.route('/logout')
 def logout():

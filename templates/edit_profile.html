@@ -5,17 +5,17 @@
         <div class="col s5">
             <div class="input-field">
                 <label for="first_name">First Name</label>
-                <input id="first_name" name="first_name" type="text" class="validate" value="{{ user.first_name.capitalize() }}">
+                <input id="first_name" name="first_name" type="text" class="validate" value="{{ current_session_user.first_name.capitalize() }}">
             </div>
             
             <div class="input-field">
                 <label for="last_name">Last Name</label>
-                <input id="last_name" name="last_name" type="text" class="validate" value="{{ user.last_name.capitalize() }}">
+                <input id="last_name" name="last_name" type="text" class="validate" value="{{ current_session_user.last_name.capitalize() }}">
             </div>
             
             <div class="input-field">
                 <label for="email">Email Address</label>
-                <input id="email" name="email" type="email" class="validate" value="{{ user.contact.email }}">
+                <input id="email" name="email" type="email" class="validate" value="{{ current_session_user.contact.email }}">
             </div>
             
             <div class="input-field">
@@ -25,21 +25,21 @@
             
             <div class="input-field">
                 <label for="description">Job Title/Short Decription</label>
-                <input id="description" name="description" type="text" class="validate" value="{{ user.description.title() }}">
+                <input id="description" name="description" type="text" class="validate" value="{{ current_session_user.description.title() }}">
             </div>
             
             <div class="input-field">
                 <select multiple name="looking_to">
                     <option value="" disabled selected>Choose your options</option>
-                    {% if "find a mentor" in user.looking_to %}
+                    {% if "find a mentor" in current_session_user.looking_to %}
                     <option value="find a mentor" selected>Find a mentor</option>
                     {% else %}
                     <option value="find a mentor">Find a mentor</option>
-                    {% endif %} {% if "become a mentor" in user.looking_to %}
+                    {% endif %} {% if "become a mentor" in current_session_user.looking_to %}
                     <option value="become a mentor" selected>Become a mentor</option>
                     {% else %}
                     <option value="become a mentor">Become a mentor</option>
-                    {% endif %} {% if "pair program" in user.looking_to %}
+                    {% endif %} {% if "pair program" in current_session_user.looking_to %}
                     <option value="pair program" selected>Pair program</option>
                     {% else %}
                     <option value="pair program">Pair program</option>
@@ -52,37 +52,37 @@
         <div class="col s5">
             <div class="input-field">
                 <label for="github">Github</label>
-                <input id="github" name="github" type="text" value="{{ user.contact.github }}">
+                <input id="github" name="github" type="text" value="{{ current_session_user.contact.github }}">
             </div>
             
             <div class="input-field">
                 <label for="linkedin">LinkedIn</label>
-                <input id="linkedin" name="linkedin" type="text" value="{{ user.contact.linkedin }}">
+                <input id="linkedin" name="linkedin" type="text" value="{{ current_session_user.contact.linkedin }}">
             </div>
             
             <div class="input-field">
                 <label for="skype">Skype</label>
-                <input id="skype" name="skype" type="text" value="{{ user.contact.skype }}">
+                <input id="skype" name="skype" type="text" value="{{ current_session_user.contact.skype }}">
             </div>
             
             <div class="input-field">
                 <label for="discord">Discord</label>
-                <input id="discord" name="discord" type="text" value="{{ user.contact.discord }}">
+                <input id="discord" name="discord" type="text" value="{{ current_session_user.contact.discord }}">
             </div>
             
             <div class="input-field">
                 <label for="avatar">Avatar URL</label>
-                <input id="avatar" name="avatar" type="text" value="{{ user.avatar }}">
+                <input id="avatar" name="avatar" type="text" value="{{ current_session_user.avatar }}">
             </div>
             
             <div class="input-field">
                 <label for="expertise">Expertise</label>
-                <input id="expertise" name="expertise" type="text" class="materialize-textarea" value="{{ ','.join(user.expertise) }}">
+                <input id="expertise" name="expertise" type="text" class="materialize-textarea" value="{{ ','.join(current_session_user.expertise) }}">
             </div>
         </div>
         <div class="input-field col s12">
             <label for="about">About Me</label>
-            <textarea id="about" name="about" class="materialize-textarea padding-0" data-length="500">{{ user.about }}</textarea>
+            <textarea id="about" name="about" class="materialize-textarea padding-0" data-length="500">{{ current_session_user.about }}</textarea>
         </div>
         <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Save</button>
         </form>
