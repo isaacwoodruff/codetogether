@@ -30,7 +30,6 @@
             
             <div class="input-field">
                 <select multiple name="looking_to">
-                    <option value="" disabled selected>Choose your options</option>
                     {% if "find a mentor" in current_session_user.looking_to %}
                     <option value="find a mentor" selected>Find a mentor</option>
                     {% else %}
