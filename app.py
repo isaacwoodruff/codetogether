@@ -9,6 +9,7 @@ from flask_login import current_user, login_user, logout_user, login_required, L
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired
+from flask_socketio import SocketIO, send, emit
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'main_db'
@@ -16,9 +17,12 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
+
 lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login'
+
+socketio = SocketIO(app, cors_allowed_origins='*')
 
 def connect_current_user_to_database():
     if current_user.is_authenticated:
@@ -237,7 +241,17 @@ def register():
             flash("Email already registered", category='success')
     return render_template('login.html', title='Register', form=form, current_session_user=current_user_object)
 
+@app.route('/user_messages', methods=['GET', 'POST'])
+def user_messages():
+    current_user_object = connect_current_user_to_database()
+    return render_template('user_messages.html', current_session_user=current_user_object)
+
+@socketio.on('server message')
+def server_message(json, methods=['GET', 'POST']):
+    socketio.emit('client message', json)
+
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=8080,
-            debug=True)
+    socketio.run(app,
+                host=os.environ.get('IP'),
+                port=8080,
+                debug=True)

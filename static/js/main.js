@@ -9,8 +9,6 @@ $(document).ready(function(){
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
 	});
-	
-	$('select').formSelect();
 
 	$(".dropdown-trigger").dropdown({coverTrigger: false});
 })
