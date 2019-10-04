@@ -55,11 +55,13 @@ A user of Code Together expects to:
 
 These wireframes were created using [Balsamiq](https://balsamiq.com/).
 
-- [Home](static/img/home.png)
-- [Mentors Search](static/img/mentors-search.png)
-- [Pair programmers Search](static/img/pair-programmers-search.png)
-- [Login/Register](static/img/login-register.png)
-- [My Profile](static/img/my-profile.png)
-- [Edit Profile](static/img/edit-profile.png)
-- [User Profile](static/img/user-profile.png)
-- [Messages](static/img/messages.png)
+- [Home](https://ibb.co/vh6Zwvh)
+- [Mentors Search](https://ibb.co/fvxbKqL)
+- [Pair programmers Search](https://ibb.co/qdCMVmk)
+- [Login/Register](https://ibb.co/5YGzSs5)
+- [My Profile](https://ibb.co/2qsSbpB)
+- [Edit Profile](https://ibb.co/rFmqZzf)
+- [User Profile](https://ibb.co/YTjCRWr)
+- [Messages](https://ibb.co/WF8CBTB)
+- 
+
