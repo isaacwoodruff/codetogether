@@ -13,17 +13,17 @@ Code Together was created as a free platform to connect software developers with
     - [Existing Features](#existing-features)
     - [Features Left to Implement](#features-left-to-implement)
 
-2. [Information Architecture](#information-architecture)
+3. [Information Architecture](#information-architecture)
 
-3. [Technologies Used](#technologies-used)
+4. [Technologies Used](#technologies-used)
 
-4. [Testing](#testing)
+5. [Testing](#testing)
 
-5. [Deployment](#deployment)
+6. [Deployment](#deployment)
     - [Heroku Deployment](#heroku-deployment)
     - [Local Deployment](#how-to-deploy-this-project-locally)
 
-6. [Credits](#credits)
+7. [Credits](#credits)
 
 # UX
 ## Goals
@@ -118,3 +118,34 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/).
     - Text messaging
     - Screen share
     - Multiplayer live code share
+
+##### Forgot Password Option
+- Have the option to get the users password sent to their email if a user forgets it
+
+# Information Architecture
+A MongoDB NoSQL database was used in the creation of this website.
+
+#### Users Collection
+This is the JSON structure of the users collection:
+
+```
+{
+    _id : ObjectId(),
+    first_name : String,
+    last_name : String,
+    password : Encrypted String,
+    description : String,
+    avatar : String,
+    about : String,
+    expertise : Array,
+    looking_to : Array,
+    contact : {
+        email : String,
+        skype : String,
+        github : String,
+        linkedin : String,
+        discord : String,
+    }
+}
+
+```
