@@ -56,12 +56,65 @@ A user of Code Together expects to:
 These wireframes were created using [Balsamiq](https://balsamiq.com/).
 
 - [Home](https://ibb.co/vh6Zwvh)
-- [Mentors Search](https://ibb.co/fvxbKqL)
-- [Pair programmers Search](https://ibb.co/qdCMVmk)
 - [Login/Register](https://ibb.co/5YGzSs5)
 - [My Profile](https://ibb.co/2qsSbpB)
 - [Edit Profile](https://ibb.co/rFmqZzf)
+- [Mentors](https://ibb.co/fvxbKqL)
+- [Pair programmers](https://ibb.co/qdCMVmk)
 - [User Profile](https://ibb.co/YTjCRWr)
 - [Messages](https://ibb.co/WF8CBTB)
-- 
 
+# Features
+## Existing Features
+##### Navbar
+- For users who are not logged in, only the following links are visible:
+    1. Mentors
+    2. Pair Programmers
+    3. Login/Register
+    
+- For users who are logged in, the following links are visible: 
+    1. Mentors
+    2. Pair Programmers
+    3. A circular user icon (when clicked it displays a dropdown menu)
+        - Profile
+        - Messages
+        - Log out
+
+##### Home Page
+- This is used as the landing page. It gives some information about what the website is and gives users the option to register or login.
+
+##### Login Page
+- This page displays the form that users can use to login so that they can gain access to all the features of the website. It also gives an option that will bring you to the register page.
+
+##### Register Page
+- This page displays the form that users can use to register an account.
+
+##### Edit Profile Page
+- This page displays the form that users can use to edit their profile.
+
+##### My Profile Page
+- This is the logged in users own profile page that's automatically generated with the information they provided to the database.
+
+##### User Profile Page
+- This is the profile page of another user that isn't the one logged in. It is also automatically generated with the information they provided to the database.
+
+##### Mentors Page
+- This page shows all of the people looking to mentor other developers. It also has search functionality.
+- You can search by:
+    - First name and/or last name
+    - Job Title/Description
+    - Expertise
+
+##### Pair Programmers Page
+- This page shows all of the people looking to pair program with other developers. It also has search functionality.
+- You can search by:
+    - First name and/or last name
+    - Job Title/Description
+    - Expertise
+
+## Features Left To Implement
+##### Messaging
+- The ability for users to contact each other within the website through the medium of:
+    - Text messaging
+    - Screen share
+    - Multiplayer live code share
