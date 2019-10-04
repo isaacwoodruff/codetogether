@@ -24,3 +24,42 @@ Code Together was created as a free platform to connect software developers with
     - [Local Deployment](#how-to-deploy-this-project-locally)
 
 6. [Credits](#credits)
+
+# UX
+## Goals
+The goal of this project is to create a web application to connect software developers with mentors, and pair programmers. It's aim was to be built in Python in conjunction with the Flask framework, and MongoDB to enable users to create, read, update and delete (CRUD).
+
+### User Goals
+The target audience for this project is:
+- Developers looking to find a mentor
+- Developers looking to find a pair programming partner
+- Developers looking to start mentoring other developers
+
+The user goals are to have:
+- A platform that easily connects developers with mentors, and pair programmers
+- A simple, user friendly search functionality to find who they're looking for
+- Their own profile with relevant information that they can edit themselves
+- The ability to contact another developer
+
+## User Stories
+A user of Code Together expects to:
+- Be able to register, login, and logout
+- Have their own profile which they can create, read, update or delete
+- Search through the database for all mentors and pair programmers
+- Search for mentors/pair programmers with a specific expertise
+- Search for mentors/pair programmers with a specific name
+- View another users profile
+- Contact another user
+
+## Wireframes
+
+These wireframes were created using [Balsamiq](https://balsamiq.com/).
+
+- [Home](static/img/home.png)
+- [Mentors Search](static/img/mentors-search.png)
+- [Pair programmers Search](static/img/pair-programmers-search.png)
+- [Login/Register](static/img/login-register.png)
+- [My Profile](static/img/my-profile.png)
+- [Edit Profile](static/img/edit-profile.png)
+- [User Profile](static/img/user-profile.png)
+- [Messages](static/img/messages.png)
