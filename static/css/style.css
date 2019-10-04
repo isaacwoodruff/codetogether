@@ -24,11 +24,16 @@ body {
 
 .profile-preview {
     overflow: hidden;
-    max-height: 115px;
+    max-height: 120px;
 }
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.tab-link.cursor-pointer h5{
+    font-size: 1.5rem;
+    margin: 15px;
 }
 
 #about {
