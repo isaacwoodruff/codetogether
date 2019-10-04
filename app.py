@@ -253,5 +253,5 @@ def server_message(json, methods=['GET', 'POST']):
 if __name__ == '__main__':
     socketio.run(app,
                 host=os.environ.get('IP'),
-                port=8080,
-                debug=True)
+                port=os.environ.get('PORT'),
+                debug=False)
