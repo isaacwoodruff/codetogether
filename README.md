@@ -190,3 +190,12 @@ This is the JSON structure of the users collection:
 
 ### Programming Languages
 - This project uses **HTML**, **CSS**, **JavaScript** and **Python**.
+
+# Testing
+
+# Deployment
+## Heroku Deployment
+
+## Local Deployment
+
+# Credits
