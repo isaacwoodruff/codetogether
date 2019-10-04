@@ -149,3 +149,44 @@ This is the JSON structure of the users collection:
 }
 
 ```
+
+# Technologies Used
+
+### Tools
+- [Cloud9](https://aws.amazon.com/cloud9/) 
+    - The IDE **Cloud9** was used throughout the project for development.
+- [Git](https://git-scm.com)
+    - The project uses **Git** for version control during the development process. 
+- [GitHub](https://github.com/)
+    - The project uses **GitHub** for a remote repository.
+- [Balsamiq](https://balsamiq.com/)
+    - The project used **Balsamiq** to build wireframes in the planning stage of development.
+- [Google Chrome - Dev Tools](https://www.google.com/chrome/)
+    - The project used **Google Chrome - Dev Tools** to test responsiveness, to debug code by utilising breakpoints and the console, and to speed up the design process.
+- [PIP](https://pip.pypa.io/en/stable/installing/)
+    - The project used **PIP** to install the tools needed in this project.
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+    - The project uses **MongoDB Atlas** as the database for this project
+
+### Libraries
+- [JQuery](https://jquery.com)
+    - The project uses **JQuery** to simplify DOM manipulation.
+- [Materialize](https://materializecss.com/)
+    - The project uses the **Materialize** framework to help create a responsive design.
+- [Material Icons](https://material.io/resources/icons/)
+    - The project uses **Material Icons** to create icons.
+- [PyMongo](https://api.mongodb.com/python/current/)
+    - The project uses **PyMongo** to facilitate communication between Python and MongoDB.
+- [Flask](https://flask.palletsprojects.com/en/1.0.x/)
+    - The project uses **Flask** to dynamically render pages.
+- [Jinja](http://jinja.pocoo.org/docs/2.10/)
+    - The project uses **Jinja** to efficiently provide data from the backend to the templates.
+- [Flask-Login](https://flask-login.readthedocs.io/en/latest/)
+    - The project uses **Flask-Login** to handle user sessions for login functionality.
+- [Flask-WTF](https://flask-wtf.readthedocs.io/en/stable/)
+    - The project uses **Flask-WTF** to effectively handle form data.
+- [Flask-SocketIO](https://flask-socketio.readthedocs.io/en/latest/)
+    - The project uses **Flask-SocketIO** to handle messaging functionality between users.
+
+### Programming Languages
+- This project uses **HTML**, **CSS**, **JavaScript** and **Python**.
