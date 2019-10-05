@@ -58,13 +58,27 @@ def user_profile(user_id):
     current_user_object = connect_current_user_to_database(current_user)
     user = user_profile_query(user_id)
     return render_template('user_profile.html', user=user, current_session_user=current_user_object)
-    
+
 @app.route('/update_profile', methods=["POST"])
 @login_required
 def update_profile():
     current_user_object = connect_current_user_to_database(current_user)
     update_profile_query(current_user_object)
     return redirect(url_for('edit_profile'))
+
+@app.route('/delete_profile', methods=["GET","POST"])
+@login_required
+def delete_profile():
+    current_user_object = connect_current_user_to_database(current_user)    
+    form = LoginForm()
+    user_email = form.email.data
+    if request.method == 'POST' and form.validate_on_submit():
+        if user_email and current_user_object['contact']['email']:
+            delete_user_query(current_user_object)
+            return redirect(url_for('index'))
+
+    return render_template('login.html', title='Are you sure?', form=form, current_session_user=current_user_object)
+    
 
 if __name__ == '__main__':
     socketio.run(app,

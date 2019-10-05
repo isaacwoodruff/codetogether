@@ -136,3 +136,6 @@ def create_new_user_query(form):
             'discord': ""
         }
     })
+    
+def delete_user_query(current_user_object):
+    mongo.db.users.delete_one({"_id" : current_user_object['_id']})

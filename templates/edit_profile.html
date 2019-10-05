@@ -84,6 +84,7 @@
             <textarea id="about" name="about" class="materialize-textarea padding-0" data-length="500">{{ current_session_user.about }}</textarea>
         </div>
         <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Save</button>
+        <a href="{{ url_for('delete_profile') }}" class="btn waves-effect waves-light btn-large">Delete Profile</a>
         </form>
     </div>
 {% endblock %}

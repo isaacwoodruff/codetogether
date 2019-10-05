@@ -59,7 +59,6 @@ def register():
         if find_user_by_form_email(form) is None:
             create_new_user_query(form)
             user = find_user_by_form_email(form)
-            print(user)
             login_user(User(user["contact"]["email"]))
             flash("is logged in successfully", category='success')
             return redirect(request.args.get("next") or url_for("edit_profile"))
