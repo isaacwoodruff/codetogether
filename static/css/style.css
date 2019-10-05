@@ -1,7 +1,3 @@
-body {
-    background: lavender;
-}
-
 .img-max-width-256 {
     max-width: 256px;
 }
@@ -71,6 +67,10 @@ body {
 .tabs-nav {
     border-radius: 10px;
     overflow: hidden;
+}
+
+.flex-direction-reverse {
+    flex-direction: row-reverse;
 }
 
 @media only screen and (max-width: 440px) {
