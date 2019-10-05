@@ -8,14 +8,31 @@ def index():
     current_user_object = connect_current_user_to_database(current_user)
     return render_template('index.html', current_session_user=current_user_object)
     
+@app.route('/<dev_type>/search/<expertise>', methods=["GET","POST"])
+@login_required
+def expertise_search(dev_type, expertise):
+    current_user_object = connect_current_user_to_database(current_user)
+    name = ['']
+    expertise = expertise.lower().strip().split(",")
+    if dev_type == "Mentors":
+        users = mentor_search_query(name, expertise)
+    if dev_type == "Pair Programmers":
+        users = pair_programmers_search_query(name, expertise)
+    if request.method == 'POST':
+        name = request.form.get('name').lower().split(' ', 2)
+        expertise = request.form.get('expertise').lower().strip().split(",")
+        users = mentor_search_query(name, expertise)
+        return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+    return render_template('search.html', users=users, current_session_user=current_user_object, title=dev_type, expertise_tag=expertise)
+    
 @app.route('/mentors/search', methods=["GET","POST"])
 @login_required
 def mentors_search():
     current_user_object = connect_current_user_to_database(current_user)
     if request.method == 'POST':
-        name = request.form.get('name').split(' ', 2)
-        expertise = request.form.get('expertise').strip().split(",")
-        mentor_search_query(name, expertise)
+        name = request.form.get('name').lower().split(' ', 2)
+        expertise = request.form.get('expertise').lower().strip().split(",")
+        users = mentor_search_query(name, expertise)
         return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
     return render_template('search.html', current_session_user=current_user_object, title="Mentors")
     
@@ -32,9 +49,9 @@ def mentors():
 def pair_programmers_search():
     current_user_object = connect_current_user_to_database(current_user)
     if request.method == 'POST':
-        name = request.form.get('name').split(' ', 2)
-        expertise = request.form.get('expertise').strip().split(",")
-        pair_programmers_search_query(name, expertise)
+        name = request.form.get('name').lower().split(' ', 2)
+        expertise = request.form.get('expertise').lower().strip().split(",")
+        users = pair_programmers_search_query(name, expertise)
         return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
     return render_template('search.html', current_session_user=current_user_object, title="Pair Programmers")
     

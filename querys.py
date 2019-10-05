@@ -9,8 +9,6 @@ def connect_current_user_to_database(current_user):
         return current_user_object
 
 def mentor_search_query(name, expertise):
-    name = name.islower()
-    expertise = expertise.lower()
     if len(name) == 2:
         users = mongo.db.users.find(
             {"$and" :
@@ -39,8 +37,6 @@ def all_mentors_query():
     return mongo.db.users.find({'looking_to': {"$in":["become a mentor"]}})
     
 def pair_programmers_search_query(name, expertise):
-    name = name.lower()
-    expertise = expertise.lower()
     if len(name) == 2:
         users = mongo.db.users.find(
             {"$and" :
@@ -78,7 +74,7 @@ def update_profile_query(current_user_object):
     description = request.form.get('description').lower()
     avatar = request.form.get('avatar')
     about = request.form.get('about')
-    expertise = request.form.get('expertise').strip().split(",")
+    expertise = request.form.get('expertise').lower().strip().split(",")
     looking_to = request.form.getlist('looking_to')
     email = request.form.get('email').lower()
     skype = request.form.get('skype').lower()

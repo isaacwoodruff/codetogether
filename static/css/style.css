@@ -24,7 +24,7 @@ body {
 
 .profile-preview {
     overflow: hidden;
-    max-height: 120px;
+    max-height: 135px;
 }
 
 .cursor-pointer {
@@ -46,6 +46,10 @@ body {
 
 .margin-left-50 {
     margin-left:  50px;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
 }
 
 .tab-content {

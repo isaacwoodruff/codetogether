@@ -1,22 +1,26 @@
 {% extends 'base.html' %} {% block content %}
- 
+
 <div class="row center">
     <h3>{{ title }}</h3>
     <form action="
-    {% if title == 'Mentors' %}
-        {{ url_for('mentors_search') }}
-    {% else %}
-        {{ url_for('pair_programmers_search') }}
-    {% endif %}
+        {% if title == 'Mentors' %}
+            {{ url_for('mentors_search') }}
+        {% else %}
+            {{ url_for('pair_programmers_search') }}
+        {% endif %}
     " method="POST">
         <div class="input-field">
             <label for="name">Name</label>
-            <input id="name" name="name" type="text" class="validate">
+            <input id="name" name="name" type="text" class="validate" >
         </div>
         
         <div class="input-field">
             <label for="expertise">Expertise</label>
-            <input id="expertise" name="expertise" type="text" class="validate">
+            {% if expertise_tag %}
+                <input id="expertise" name="expertise" type="text" class="validate" value="{{ ','.join(expertise_tag) }}">
+            {% else %}
+                <input id="expertise" name="expertise" type="text" class="validate">
+            {% endif %}
         </div>
     
         <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Search</button>
@@ -33,11 +37,10 @@
             <a href="{{ url_for('user_profile', user_id=user._id) }}"><h5>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h5></a>
             <p class="truncate">{{ user.about }}</p>
             {% for item in user.expertise[-5:] %}
-            <a href="#" class="truncate display-inline-block">{ {{ item }} } </a>
+                <a class="waves-effect waves-light btn-small margin-bottom-10" href="{{ url_for('expertise_search', dev_type=title, expertise=item ) }}">{{ item }}</a>
             {% endfor %}
         </div>
     </div>
     {% endfor %}
 </div>
-
 {% endblock %}
