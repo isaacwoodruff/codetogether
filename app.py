@@ -8,22 +8,22 @@ def index():
     current_user_object = connect_current_user_to_database(current_user)
     return render_template('index.html', current_session_user=current_user_object)
     
-@app.route('/<dev_type>/search/<expertise>', methods=["GET","POST"])
+@app.route('/<dev_type>/search/<expertise_tag>', methods=["GET","POST"])
 @login_required
-def expertise_search(dev_type, expertise):
+def expertise_search(dev_type, expertise_tag):
     current_user_object = connect_current_user_to_database(current_user)
     name = ['']
-    expertise = expertise.lower().strip().split(",")
+    expertise_tag = [expertise_tag]
     if dev_type == "Mentors":
-        users = mentor_search_query(name, expertise)
+        users = mentor_search_query(name, expertise_tag)
     if dev_type == "Pair Programmers":
-        users = pair_programmers_search_query(name, expertise)
+        users = pair_programmers_search_query(name, expertise_tag)
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
         expertise = request.form.get('expertise').lower().strip().split(",")
         users = mentor_search_query(name, expertise)
         return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
-    return render_template('search.html', users=users, current_session_user=current_user_object, title=dev_type, expertise_tag=expertise)
+    return render_template('search.html', users=users, current_session_user=current_user_object, title=dev_type, expertise_tag=expertise_tag)
     
 @app.route('/mentors/search', methods=["GET","POST"])
 @login_required
