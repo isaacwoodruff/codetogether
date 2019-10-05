@@ -22,18 +22,18 @@
                 <input id="expertise" name="expertise" type="text" class="validate">
             {% endif %}
         </div>
-    
+
         <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Search</button>
     </form>
 </div>
 
 <div class="row center">
     {% for user in users %}
-    <div class="valign-wrapper hoverable border-radius-15 margin-top-50 col s12 l6">
-        <div class="col s2 m3 right-align">
-            <a href="{{ url_for('user_profile', user_id=user._id) }}"><img src="{{ user.avatar }}" class="img-max-width-64 z-depth-2 circle"></a>
+    <div class="valign-wrapper hoverable padding-10 border-radius-15 margin-top-50 col s12 l6">
+        <div class="col s12 m3">
+            <a href="{{ url_for('user_profile', user_id=user._id) }}"><img src="{{ user.avatar }}" class="img-max-width-150 z-depth-2 circle"></a>
         </div>
-        <div class="col s10 m9 left-align profile-preview">
+        <div class="col s12 m9 profile-preview left-align">
             <a href="{{ url_for('user_profile', user_id=user._id) }}"><h5>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h5></a>
             <p class="truncate">{{ user.about }}</p>
             {% for item in user.expertise[-5:] %}

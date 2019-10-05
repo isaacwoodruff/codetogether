@@ -6,8 +6,8 @@ body {
     max-width: 256px;
 }
 
-.img-max-width-64 {
-    max-width: 64px;
+.img-max-width-150 {
+    max-width: 150px;
 }
 
 #user-profile-icon {
@@ -29,6 +29,10 @@ body {
 
 #about {
     padding-bottom: 0;
+}
+
+.row.center .padding-10 {
+    padding: 10px;
 }
 
 .margin-top-50 {
@@ -72,6 +76,17 @@ body {
 @media only screen and (max-width: 440px) {
     nav .brand-logo {
         left: 35%;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .valign-wrapper {
+        display: block;
+    }
+    
+    .profile-preview h5 {
+        text-align: center;
     }
 }
 
