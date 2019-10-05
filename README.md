@@ -102,14 +102,12 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/).
 - This page shows all of the people looking to mentor other developers. It also has search functionality.
 - You can search by:
     - First name and/or last name
-    - Job Title/Description
     - Expertise
 
 ##### Pair Programmers Page
 - This page shows all of the people looking to pair program with other developers. It also has search functionality.
 - You can search by:
     - First name and/or last name
-    - Job Title/Description
     - Expertise
 
 ## Features Left To Implement
