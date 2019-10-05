@@ -76,11 +76,8 @@
     </div>
     <div id="expertise" class="tab-content">
         <h3>Expertise</h3>
-        <div class="row margin-top-50">
-            <div class="col s12 m6">
-                <h5>Expertise</h5>
-            </div>
-            <div class="col s12 m6">
+        <div class="row center margin-top-50">
+            <div class="col s12">
                 <ul>
                     {% for item in user.expertise %}
                     <li class="waves-effect waves-light btn-small margin-bottom-10">{{ item.capitalize() }}</li>
@@ -109,7 +106,8 @@
         </div>
     </div>
     {% if current_user.is_authenticated and user._id == current_session_user._id %}
-    <a href="{{ url_for('edit_profile') }}" class="btn waves-effect waves-light btn-large">Edit Profile</a> {% endif %}
+        <a href="{{ url_for('edit_profile') }}" class="btn waves-effect waves-light btn-large margin-top-50">Edit Profile</a>
+    {% endif %}
 </div>
     
 {% endblock %}
