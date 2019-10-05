@@ -24,16 +24,7 @@ body {
 
 .profile-preview {
     overflow: hidden;
-    max-height: 135px;
-}
-
-.cursor-pointer {
-    cursor: pointer;
-}
-
-.tab-link.cursor-pointer h5{
-    font-size: 1.5rem;
-    margin: 15px;
+    max-height: 130px;
 }
 
 #about {
@@ -62,6 +53,15 @@ body {
 
 .tab-link.current {
     background-color: #00bcd4;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.tab-link-heading h5 {
+    font-size: 1.5rem;
+    margin: 15px;
 }
 
 .tabs-nav {
