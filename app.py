@@ -61,9 +61,9 @@ def user_profile(user_id):
     
 @app.route('/update_profile', methods=["POST"])
 @login_required
-def update_profile(form, current_user_object):
+def update_profile():
     current_user_object = connect_current_user_to_database(current_user)
-    update_profile_query()
+    update_profile_query(current_user_object)
     return redirect(url_for('edit_profile'))
 
 if __name__ == '__main__':

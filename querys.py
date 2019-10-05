@@ -10,7 +10,7 @@ def connect_current_user_to_database(current_user):
 
 def mentor_search_query(name, expertise):
     name = name.islower()
-    expertise = expertise.islower()
+    expertise = expertise.lower()
     if len(name) == 2:
         users = mongo.db.users.find(
             {"$and" :
@@ -39,8 +39,8 @@ def all_mentors_query():
     return mongo.db.users.find({'looking_to': {"$in":["become a mentor"]}})
     
 def pair_programmers_search_query(name, expertise):
-    name = name.islower()
-    expertise = expertise.islower()
+    name = name.lower()
+    expertise = expertise.lower()
     if len(name) == 2:
         users = mongo.db.users.find(
             {"$and" :
@@ -71,21 +71,21 @@ def all_pair_programmers_query():
 def user_profile_query(user_id):
     return mongo.db.users.find_one({"_id": ObjectId(user_id)})
     
-def update_profile_query(form, current_user_object):
+def update_profile_query(current_user_object):
     password = request.form.get('password')
-    first_name = request.form.get('first_name').islower()
-    last_name = request.form.get('last_name').islower()
-    description = request.form.get('description').islower()
+    first_name = request.form.get('first_name').lower()
+    last_name = request.form.get('last_name').lower()
+    description = request.form.get('description').lower()
     avatar = request.form.get('avatar')
     about = request.form.get('about')
-    expertise = request.form.get('expertise').islower().strip().split(",")
-    looking_to = request.form.getlist('looking_to').islower()
-    email = request.form.get('email').islower()
-    skype = request.form.get('skype').islower()
-    github = request.form.get('github').islower()
-    linkedin = request.form.get('linkedin').islower()
-    discord = request.form.get('discord').islower()
-    update = mongo.db.users.update( {'_id': current_user_object["_id"]},
+    expertise = request.form.get('expertise').strip().split(",")
+    looking_to = request.form.getlist('looking_to')
+    email = request.form.get('email').lower()
+    skype = request.form.get('skype').lower()
+    github = request.form.get('github').lower()
+    linkedin = request.form.get('linkedin').lower()
+    discord = request.form.get('discord').lower()
+    mongo.db.users.update( {'_id': current_user_object["_id"]},
     {
         '$set': {
             'first_name': first_name,
@@ -103,37 +103,36 @@ def update_profile_query(form, current_user_object):
         }
     })
     if password is not '':
-        user_pass = users.update( {'_id': current_user_object["_id"]},
+        users.update( {'_id': current_user_object["_id"]},
         {'$set':
             {'password': generate_password_hash(password)}
         })
     else:
         user_pass = ''
-    return update, user_pass
         
 def find_user_by_email(email):
     return mongo.db.users.find_one({"contact.email": email})
 
 def find_user_by_form_email(form):
-    email = form.email.data.islower()
+    email = form.email.data.lower()
     return mongo.db.users.find_one({ "contact.email" : email})
 
 def create_new_user_query(form):
-    email = form.email.data.islower()
-    return mongo.db.users.insert_one({
-                "password": generate_password_hash(form.password.data),
-                'first_name': "",
-                'last_name': "",
-                'description': "",
-                'avatar': "",
-                'about': "",
-                'expertise': "",
-                'looking_to': "",
-                "contact": {
-                    "email" : email,
-                    'skype': "",
-                    'github': "",
-                    'linkedin': "",
-                    'discord': ""
-                }
-            })
+    email = form.email.data.lower()
+    mongo.db.users.insert_one({
+        "password": generate_password_hash(form.password.data),
+        'first_name': "",
+        'last_name': "",
+        'description': "",
+        'avatar': "",
+        'about': "",
+        'expertise': "",
+        'looking_to': "",
+        "contact": {
+            "email" : email,
+            'skype': "",
+            'github': "",
+            'linkedin': "",
+            'discord': ""
+        }
+    })
