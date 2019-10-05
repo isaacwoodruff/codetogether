@@ -44,12 +44,12 @@ body {
     margin-top: 50px;
 }
 
-.margin-left-50 {
-    margin-left:  50px;
-}
-
 .margin-bottom-10 {
     margin-bottom: 10px;
+}
+
+.max-width-200 {
+    max-width: 200px;
 }
 
 .tab-content {
@@ -67,4 +67,16 @@ body {
 .tabs-nav {
     border-radius: 10px;
     overflow: hidden;
+}
+
+@media only screen and (max-width: 440px) {
+    nav .brand-logo {
+        left: 35%;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .margin-left-50 {
+        margin-left: 50px;
+    }
 }

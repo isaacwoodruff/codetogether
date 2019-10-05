@@ -9,6 +9,10 @@ $(document).ready(function(){
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
 	});
-
+	
+	$('.sidenav').sidenav({edge:'right'});
+	
 	$(".dropdown-trigger").dropdown({coverTrigger: false});
+	
+    $('.fixed-action-btn').floatingActionButton();
 })
