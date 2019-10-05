@@ -19,7 +19,7 @@
                     <button class="btn btn-default" type="submit">Login</button>
                     <a href="{{ url_for('register') }}" class="btn btn-default">Register</a>
                 {% elif title == "Are you sure?" %}
-                    <button class="btn btn-default" type="submit">Delete Profile</button>
+                    <button class="btn btn-default red" type="submit">Delete Profile</button>
                 {% else %}
                     <button class="btn btn-default" type="submit">Register</button>
                 {% endif %}

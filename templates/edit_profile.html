@@ -2,7 +2,7 @@
     <div class="row center">
         <h2>Edit Profile</h2>
         <form action="{{ url_for('update_profile') }}" method="POST"  class="col s12">
-        <div class="col s5">
+        <div class="col s12 m5">
             <div class="input-field">
                 <label for="first_name">First Name</label>
                 <input id="first_name" name="first_name" type="text" class="validate" value="{{ current_session_user.first_name.capitalize() }}">
@@ -47,8 +47,8 @@
                 <label>Looking to:</label>
             </div>
         </div>
-        <div class="col s2"></div>
-        <div class="col s5">
+        <div class="col m2"></div>
+        <div class="col s12 m5">
             <div class="input-field">
                 <label for="github">Github</label>
                 <input id="github" name="github" type="text" value="{{ current_session_user.contact.github }}">
@@ -83,8 +83,17 @@
             <label for="about">About Me</label>
             <textarea id="about" name="about" class="materialize-textarea padding-0" data-length="500">{{ current_session_user.about }}</textarea>
         </div>
-        <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Save</button>
-        <a href="{{ url_for('delete_profile') }}" class="btn waves-effect waves-light btn-large">Delete Profile</a>
+        <div class="row">
+            <div class="col s12 m5">
+                <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Save</button>
+            </div>
+            <div class="col s12 m2">
+                <h6>OR</h6>
+            </div>
+            <div class="col s12 m5">
+                <a href="{{ url_for('delete_profile') }}" class="btn waves-effect waves-light btn-large red">Delete Profile</a>
+            </div>
+        </div>
         </form>
     </div>
 {% endblock %}
