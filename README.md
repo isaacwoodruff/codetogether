@@ -201,7 +201,7 @@ These tools were used to test the validity of the code for this project:
 
 ### Testing Matrix
 
-A testing matrix was created using google spreadsheets. It details all of the tests to make sure the site is responsive and works on different screen sizes, devices, and browsers. The testing matrix can be found <a href="https://github.com/isaacwoodruff/code-together/blob/master/testing-matrix.pdf" target="_blank">here</a>.
+A testing matrix was created using google spreadsheets. It details all of the tests to make sure the site is responsive and works on different screen sizes, devices, and browsers. The testing matrix can be found <a href="https://github.com/isaacwoodruff/codetogether/blob/master/testing-matrix.pdf" target="_blank">here</a>.
 
 
 # Deployment
