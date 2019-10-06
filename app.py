@@ -72,12 +72,21 @@ def pair_programmers_search():
             return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
     return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
     
-@app.route('/pair_programmers')
+@app.route('/pair_programmers', methods=["GET","POST"])
 @login_required
 def pair_programmers():
     current_user_object = connect_current_user_to_database(current_user)
     title = "Pair Programmers"
     users = all_pair_programmers_query()
+    if request.method == 'POST':
+        name = request.form.get('name').lower().split(' ', 2)
+        expertise = request.form.get('expertise').lower().strip().split(",")
+        if name == [""] and expertise == [""]:
+            users = all_pair_programmers_query()
+            return url_for('pair_programmers')
+        else:
+            users = pair_programmers_search_query(name, expertise)
+            return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
     return render_template('search.html', users=users, current_session_user=current_user_object, title=title)
 
 @app.route('/edit_profile')
