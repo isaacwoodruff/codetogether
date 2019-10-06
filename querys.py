@@ -7,57 +7,13 @@ def connect_current_user_to_database(current_user):
     else:
         current_user_object = None
         return current_user_object
-
-def mentor_search_query(name, expertise):
-    if name != [""] and expertise != [""]:
-        if len(name) == 2:
-            users = mongo.db.users.find(
-                {"$and" :
-                    [{'first_name':name[0]},
-                    {'last_name':name[1]},
-                    {'expertise': { "$all": expertise }},
-                    {'looking_to': {"$in":["become a mentor"]}}]
-                })
-            return users
-        else:
-            users = mongo.db.users.find(
-                {"$and" :
-                    [{"$or":
-                        [{'first_name':name[0]},
-                        {'last_name':name[0]}]
-                    },
-                    {'expertise': { "$all": expertise }},
-                    {'looking_to': {"$in":["become a mentor"]}}]
-                })
-            return users
-    else:
-        if len(name) == 2:
-            users = mongo.db.users.find(
-                {"$and" :
-                    [{"$or":
-                        [{"$and" :
-                            [{'first_name':name[0]},
-                            {'last_name':name[1]}]
-                        },
-                        {'expertise': { "$all": expertise }}]
-                    },
-                    {'looking_to': {"$in":["become a mentor"]}}]
-                })
-            return users
-        else:
-            users = mongo.db.users.find(
-                {"$and" :
-                    [{"$or":
-                        [{'first_name':name[0]},
-                        {'last_name':name[0]},
-                        {'expertise': { "$all": expertise }}
-                    ]},
-                    {'looking_to': {"$in":["become a mentor"]}}]
-                })
-            return users
-
    
-def pair_programmers_search_query(name, expertise):
+def user_search_query(name, expertise, search_type):
+    if search_type == "Mentors":
+        search_type = "become a mentor"
+    else:
+        search_type = "pair program"
+
     if name != [""] and expertise != [""]:
         if len(name) == 2:
             users = mongo.db.users.find(
@@ -65,7 +21,7 @@ def pair_programmers_search_query(name, expertise):
                     [{'first_name':name[0]},
                     {'last_name':name[1]},
                     {'expertise': { "$all": expertise }},
-                    {'looking_to': {"$in":["pair program"]}}]
+                    {'looking_to': {"$in":[search_type]}}]
                 })
             return users
         else:
@@ -76,7 +32,7 @@ def pair_programmers_search_query(name, expertise):
                         {'last_name':name[0]}
                     ]},
                     {'expertise': { "$all": expertise }},
-                    {'looking_to': {"$in":["pair program"]}}]
+                    {'looking_to': {"$in":[search_type]}}]
                 })
             return users
     else:
@@ -90,7 +46,7 @@ def pair_programmers_search_query(name, expertise):
                         ]},
                         {'expertise': { "$all": expertise }}]
                     },
-                    {'looking_to': {"$in":["pair program"]}}]
+                    {'looking_to': {"$in":[search_type]}}]
                 })
             return users
         else:
@@ -101,7 +57,7 @@ def pair_programmers_search_query(name, expertise):
                         {'last_name':name[0]},
                         {'expertise': { "$all": expertise }}
                     ]},
-                    {'looking_to': {"$in":["pair program"]}}]
+                    {'looking_to': {"$in":[search_type]}}]
                 })
             return users
             
