@@ -166,7 +166,9 @@ This is the JSON structure of the users collection:
 - [PIP](https://pip.pypa.io/en/stable/installing/)
     - The project used **PIP** to install the tools needed in this project.
 - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-    - The project uses **MongoDB Atlas** as the database for this project
+    - The project uses **MongoDB Atlas** as the database for this project- 
+- [AutoPrefixer](https://autoprefixer.github.io/)
+    - The project used **AutoPrefixer** to add prefixes in the CSS for cross-browser support.
 
 ### Libraries
 - [JQuery](https://jquery.com)
