@@ -102,7 +102,7 @@ def update_profile_query(current_user_object):
         }
     })
     if password is not '':
-        users.update( {'_id': current_user_object["_id"]},
+        mongo.db.users.update( {'_id': current_user_object["_id"]},
         {'$set':
             {'password': generate_password_hash(password)}
         })
