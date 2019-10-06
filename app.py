@@ -36,7 +36,7 @@ def mentors_search():
         print(expertise)
         if name == [""] and expertise == [""]:
             users = all_mentors_query()
-            return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+            return url_for('mentors')
         else:
             users = mentor_search_query(name, expertise)
             return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
@@ -59,7 +59,7 @@ def pair_programmers_search():
         expertise = request.form.get('expertise').lower().strip().split(",")
         if name == [""] and expertise == [""]:
             users = all_pair_programmers_query()
-            return render_template('search.html', current_session_user=current_user_object, title="Pair Programmers")
+            return url_for('pair_programmers')
         else:
             users = pair_programmers_search_query(name, expertise)
             return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
