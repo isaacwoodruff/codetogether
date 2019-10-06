@@ -32,8 +32,12 @@ def mentors_search():
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
         expertise = request.form.get('expertise').lower().strip().split(",")
-        users = mentor_search_query(name, expertise)
-        return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+        if name == "" and expertise == [""]:
+            users = all_mentors_query()
+            return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+        else:
+            users = mentor_search_query(name, expertise)
+            return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
     return render_template('search.html', current_session_user=current_user_object, title="Mentors")
     
 @app.route('/mentors')
@@ -51,9 +55,13 @@ def pair_programmers_search():
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
         expertise = request.form.get('expertise').lower().strip().split(",")
-        users = pair_programmers_search_query(name, expertise)
-        return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
-    return render_template('search.html', current_session_user=current_user_object, title="Pair Programmers")
+        if name == "" and expertise == [""]:
+            users = all_pair_programmers_query()
+            return render_template('search.html', current_session_user=current_user_object, title="Pair Programmers")
+        else:
+            users = pair_programmers_search_query(name, expertise)
+            return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
+    return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
     
 @app.route('/pair_programmers')
 @login_required
