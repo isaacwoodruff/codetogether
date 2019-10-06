@@ -192,6 +192,17 @@ This is the JSON structure of the users collection:
 - This project uses **HTML**, **CSS**, **JavaScript** and **Python**.
 
 # Testing
+### Validation Tools
+
+These tools were used to test the validity of the code for this project:
+- [W3C HTML Validator]( https://validator.w3.org/) was used to validate HTML.
+- [W3C CSS validator](https://jigsaw.w3.org/css-validator/) was used to validate CSS.
+- [Pythoniter](https://pythoniter.appspot.com/) was used to format python.
+
+### Testing Matrix
+
+A testing matrix was created using google spreadsheets. It details all of the tests to make sure the site is responsive and works on different screen sizes, devices, and browsers. The testing matrix can be found <a href="https://github.com/isaacwoodruff/code-together/blob/master/testing-matrix.pdf" target="_blank">here</a>.
+
 
 # Deployment
 ## Local Deployment
@@ -203,7 +214,7 @@ To run this project locally these must be installed in your IDE:
 
 ### Instructions
 
-1. Follow [this link](https://github.com/isaacwoodruff/codetogether) to the main page of the [isaacwoodruff/code-together](https://github.com/isaacwoodruff/codetogether) repository.
+1. Follow <a href="https://github.com/isaacwoodruff/codetogether" target="_blank">this link</a> to the main page of the <a href="https://github.com/isaacwoodruff/codetogether" target="_blank">isaacwoodruff/code-together</a> repository.
 2. On the right side of the page click the green **Clone or download** button.
 3. In the '**Clone with HTTPS**' section, copy the URL for the repository.
 4. Open your **terminal/Git Bash**.
@@ -265,7 +276,6 @@ To run this project locally these must be installed in your IDE:
     git push origin
     ```
     
-
 3. Go to <a href="https://heroku.com/" target="_blank">Heroku</a> and create a new app by clicking the **New** button in your dashboard. Set your app name and set the region to whichever is closest to you.
 
 4. In the heroku dashboard of your application, click on **Deploy** then **Deployment method** and select GitHub.
@@ -292,7 +302,6 @@ To get your MONGO_URI please reference the <a href="https://docs.atlas.mongodb.c
     ```
     your-heroku-app-name.herokuapp.com
     ```
-
 
 # Credits
 ### Content
