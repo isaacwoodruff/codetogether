@@ -36,9 +36,11 @@
         <div class="col s12 m9 profile-preview left-align">
             <a href="{{ url_for('user_profile', user_id=user._id) }}"><h5>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h5></a>
             <p class="truncate">{{ user.about }}</p>
-            {% for item in user.expertise[-5:] %}
-                <a class="waves-effect waves-light btn-small margin-bottom-10" href="{{ url_for('expertise_search', dev_type=title, expertise_tag=item ) }}">{{ item }}</a>
-            {% endfor %}
+            {% if user.expertise != [""] %}
+                {% for item in user.expertise[-5:] %}
+                    <a class="waves-effect waves-light btn-small margin-bottom-10" href="{{ url_for('expertise_search', dev_type=title, expertise_tag=item ) }}">{{ item }}</a>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
     {% endfor %}
