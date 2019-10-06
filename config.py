@@ -11,15 +11,19 @@ from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired
 from flask_socketio import SocketIO, send, emit
 
+
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'main_db'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 
+
 mongo = PyMongo(app)
+
 
 lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login'
+
 
 socketio = SocketIO(app, cors_allowed_origins='*')
