@@ -47,6 +47,17 @@
     <div class="container margin-top-50">
         {% block content %} {% endblock %}
     </div>
+    <div class="position-relative">
+        <footer class="cyan">
+            <div class="valign-wrapper center">
+                <div class="valign-wrapper">
+                    <a href="https://github.com/isaacwoodruff"><img class="img-max-width-32" src="https://i.ibb.co/v1kfdwV/github-logo.png"></a>
+                    <a class="hide-on-small-only" href="https://github.com/isaacwoodruff"><p>Follow me on GitHub</p></a>
+                </div>
+                <p>© 2019 Isaac Woodruff</p>
+            </div>
+        </footer>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{url_for('static', filename='js/main.js')}}"></script>

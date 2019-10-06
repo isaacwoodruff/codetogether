@@ -1,9 +1,39 @@
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+footer {
+    background: grey;
+    min-height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: -150px;
+    color: #FFF;
+}
+
+footer > .valign-wrapper {
+    justify-content: space-between;
+    max-width:  800px;
+    margin: auto;
+    padding: 10px 20px;
+}
+
+footer a {
+    color: #FFF;
+    padding: 0 10px;
+}
+
 .img-max-width-256 {
     max-width: 256px;
 }
 
 .img-max-width-150 {
     max-width: 150px;
+}
+
+.img-max-width-32 {
+    max-width: 32px;
 }
 
 #user-profile-icon {

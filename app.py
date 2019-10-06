@@ -101,4 +101,4 @@ if __name__ == '__main__':
     socketio.run(app,
                 host=os.environ.get('IP'),
                 port=os.environ.get('PORT'),
-                debug=False)
+                debug=True)
