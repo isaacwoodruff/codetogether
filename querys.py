@@ -31,7 +31,9 @@ def user_search_query(name, expertise, search_type):
     If it has 2 then it querys the users collection for 4 key/values which all have
     to be present in one user document. It doesn't find the user if its missing one
     field. If name has got less than 2 words the query is the same except it querys the
-    first_name OR last_name
+    first_name OR last_name. If their is not a value in either name or expertise, the
+    query is the same as the one above except that it lets the user search by name OR
+    expertise. So one field can be empty
     """
 
     if name != [""] and expertise != [""]:
@@ -55,13 +57,6 @@ def user_search_query(name, expertise, search_type):
                     {'looking_to': {"$in":[search_type]}}]
                 })
             return users
-    
-    """
-    If their is not a value in either name or expertise, the query is the same as the 
-    one above except that it lets the user search by name OR expertise. So one
-    field can be empty
-    """
-    
     else:
         if len(name) == 2:
             users = mongo.db.users.find(
