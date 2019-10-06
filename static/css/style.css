@@ -1,3 +1,4 @@
+/* Global styles */
 body {
     min-height: 100vh;
     position: relative;
@@ -24,22 +25,6 @@ footer a {
     padding: 0 10px;
 }
 
-.img-max-width-256 {
-    max-width: 256px;
-}
-
-.img-max-width-150 {
-    max-width: 150px;
-}
-
-.img-max-width-32 {
-    max-width: 32px;
-}
-
-#user-profile-icon {
-    font-size: 3rem;
-}
-
 .border-radius-15 {
     border-radius: 15px;
 }
@@ -50,19 +35,6 @@ footer a {
 
 .display-block {
     display: block;
-}
-
-.profile-preview {
-    overflow: hidden;
-    max-height: 130px;
-}
-
-.back-btn-wrapper {
-    text-align: left;
-}
-
-#about {
-    padding-bottom: 0;
 }
 
 .row.center .padding-10 {
@@ -81,6 +53,45 @@ footer a {
     max-width: 200px;
 }
 
+.img-max-width-256 {
+    max-width: 256px;
+}
+
+.img-max-width-150 {
+    max-width: 150px;
+}
+
+.img-max-width-32 {
+    max-width: 32px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.flex-direction-reverse {
+    flex-direction: row-reverse;
+}
+
+/* End of global styles */
+
+#user-profile-icon {
+    font-size: 3rem;
+}
+
+.profile-preview {
+    overflow: hidden;
+    max-height: 130px;
+}
+
+.back-btn-wrapper {
+    text-align: left;
+}
+
+#about {
+    padding-bottom: 0;
+}
+
 .tab-content {
     display: none;
 }
@@ -93,10 +104,6 @@ footer a {
     background-color: #00bcd4;
 }
 
-.cursor-pointer {
-    cursor: pointer;
-}
-
 .tab-link-heading h5 {
     font-size: 1.5rem;
     margin: 15px;
@@ -105,10 +112,6 @@ footer a {
 .tabs-nav {
     border-radius: 10px;
     overflow: hidden;
-}
-
-.flex-direction-reverse {
-    flex-direction: row-reverse;
 }
 
 @media only screen and (max-width: 440px) {
