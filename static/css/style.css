@@ -1,4 +1,5 @@
 /* Global styles */
+
 body {
     min-height: 100vh;
     position: relative;
@@ -14,8 +15,10 @@ footer {
 }
 
 footer > .valign-wrapper {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
-    max-width:  800px;
+    max-width: 800px;
     margin: auto;
     padding: 10px 20px;
 }
@@ -70,6 +73,9 @@ footer a {
 }
 
 .flex-direction-reverse {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
 }
 
@@ -119,7 +125,7 @@ footer a {
     nav .brand-logo {
         left: 35%;
     }
-    
+
     .back-btn-wrapper {
         text-align: center;
     }
@@ -130,11 +136,11 @@ footer a {
     .valign-wrapper {
         display: block;
     }
-    
+
     .profile-preview h5 {
         text-align: center;
     }
-    
+
     .back-btn {
         margin-bottom: 50px;
     }
