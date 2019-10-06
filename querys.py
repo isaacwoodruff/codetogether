@@ -1,5 +1,12 @@
 from config import *
 
+"""
+The connect_current_user_to_database() function check if the current_user is
+authenticated. If they are then it querys the users collection for the user and
+assigns the document to the variable current_user_object. This connects the 
+flask-login current_user with the user in the database
+"""
+
 def connect_current_user_to_database(current_user):
     if current_user.is_authenticated:
         current_user_object = mongo.db.users.find_one({"contact.email": current_user.email})
@@ -7,12 +14,25 @@ def connect_current_user_to_database(current_user):
     else:
         current_user_object = None
         return current_user_object
-   
+
+"""
+The user_search_query takes 3 parameters, name, expertise, and search_type. The
+search_type will decide whether to look for mentors or pair programmers.
+"""
+
 def user_search_query(name, expertise, search_type):
     if search_type == "Mentors":
         search_type = "become a mentor"
     else:
         search_type = "pair program"
+
+    """
+    If the name and expertise have values in them, it checks to see if name has 2 words.
+    If it has 2 then it querys the users collection for 4 key/values which all have
+    to be present in one user document. It doesn't find the user if its missing one
+    field. If name has got less than 2 words the query is the same except it querys the
+    first_name OR last_name
+    """
 
     if name != [""] and expertise != [""]:
         if len(name) == 2:
@@ -35,6 +55,13 @@ def user_search_query(name, expertise, search_type):
                     {'looking_to': {"$in":[search_type]}}]
                 })
             return users
+    
+    """
+    If their is not a value in either name or expertise, the query is the same as the 
+    one above except that it lets the user search by name OR expertise. So one
+    field can be empty
+    """
+    
     else:
         if len(name) == 2:
             users = mongo.db.users.find(
@@ -69,7 +96,13 @@ def all_pair_programmers_query():
     
 def user_profile_query(user_id):
     return mongo.db.users.find_one({"_id": ObjectId(user_id)})
-    
+
+"""
+The update_profile_query takes all the fields from the form on edit_profile and
+updates the relevant user document in the users collection. If password field is
+not empty then it will hash the password before updating it in the user document
+"""
+
 def update_profile_query(current_user_object):
     password = request.form.get('password')
     first_name = request.form.get('first_name').lower()
@@ -106,8 +139,6 @@ def update_profile_query(current_user_object):
         {'$set':
             {'password': generate_password_hash(password)}
         })
-    else:
-        user_pass = ''
         
 def find_user_by_email(email):
     return mongo.db.users.find_one({"contact.email": email})
@@ -115,6 +146,12 @@ def find_user_by_email(email):
 def find_user_by_form_email(form):
     email = form.email.data.lower()
     return mongo.db.users.find_one({ "contact.email" : email})
+
+"""
+The create_new_user_query takes the form data from the register view and inserts
+a new document to the users collection. It hashes the password before insertion
+and inserts a placeholder for avatar and about
+"""
 
 def create_new_user_query(form):
     email = form.email.data.lower()
