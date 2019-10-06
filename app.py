@@ -6,7 +6,7 @@ from messages import *
 @app.route('/')
 def index():
     current_user_object = connect_current_user_to_database(current_user)
-    return render_template('index.html', current_session_user=current_user_object)
+    return render_template('index.html', current_session_user=current_user_object, title="Home")
 
 @app.route('/<dev_type>/search/<expertise_tag>', methods=["GET","POST"])
 @login_required
@@ -58,14 +58,15 @@ def pair_programmers():
 @login_required
 def edit_profile():
     current_user_object = connect_current_user_to_database(current_user)
-    return render_template('edit_profile.html', current_session_user=current_user_object)
+    return render_template('edit_profile.html', current_session_user=current_user_object, title="Edit Profile")
     
 @app.route('/user/<user_id>')
 @login_required
 def user_profile(user_id):
     current_user_object = connect_current_user_to_database(current_user)
     user = user_profile_query(user_id)
-    return render_template('user_profile.html', user=user, current_session_user=current_user_object)
+    title = user["first_name"].capitalize() + ' ' + user["last_name"].capitalize()
+    return render_template('user_profile.html', user=user, current_session_user=current_user_object, title=title)
 
 @app.route('/update_profile', methods=["POST"])
 @login_required
