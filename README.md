@@ -100,15 +100,17 @@ These wireframes were created using [Balsamiq](https://balsamiq.com/).
 
 ##### Mentors Page
 - This page shows all of the people looking to mentor other developers. It also has search functionality.
-- You can search by:
+- A user can search by:
     - First name and/or last name
     - Expertise
+- A user can click on an expertise tag and it will automatically search for everyone with that expertise e.g Python
 
 ##### Pair Programmers Page
 - This page shows all of the people looking to pair program with other developers. It also has search functionality.
-- You can search by:
+- A user can search by:
     - First name and/or last name
     - Expertise
+- A user can click on an expertise tag and it will automatically search for everyone with that expertise e.g Python
 
 ## Features Left To Implement
 ##### Messaging
