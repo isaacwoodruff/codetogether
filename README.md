@@ -1,6 +1,6 @@
-# [Code Together](http://code-together-platform.herokuapp.com/)
+# <a href="http://code-together-platform.herokuapp.com/" target="_blank">Code Together</a>
 
-[Code Together](http://code-together-platform.herokuapp.com/) was created as a free platform to connect software developers with mentors, and pair programmers to learn, help, and build together.
+<a href="http://code-together-platform.herokuapp.com/" target="_blank">Code Together</a> was created as a free platform to connect software developers with mentors, and pair programmers to learn, help, and build together.
 
 ## Table of Contents
 
@@ -42,7 +42,7 @@ The user goals are to have:
 - The ability to contact another developer
 
 ## User Stories
-A user of [Code Together](http://code-together-platform.herokuapp.com/) expects to:
+A user of <a href="http://code-together-platform.herokuapp.com/" target="_blank">Code Together</a> expects to:
 - Be able to register, login, and logout
 - Have their own profile which they can create, read, update or delete
 - Search through the database for all mentors and pair programmers
@@ -53,16 +53,16 @@ A user of [Code Together](http://code-together-platform.herokuapp.com/) expects 
 
 ## Wireframes
 
-These wireframes were created using [Balsamiq](https://balsamiq.com/).
+These wireframes were created using <a href="https://balsamiq.com/" target="_blank">Balsamiq</a>.
 
-- [Home](https://ibb.co/vh6Zwvh)
-- [Login/Register](https://ibb.co/5YGzSs5)
-- [My Profile](https://ibb.co/2qsSbpB)
-- [Edit Profile](https://ibb.co/rFmqZzf)
-- [Mentors](https://ibb.co/fvxbKqL)
-- [Pair programmers](https://ibb.co/qdCMVmk)
-- [User Profile](https://ibb.co/YTjCRWr)
-- [Messages](https://ibb.co/WF8CBTB)
+- <a href="https://ibb.co/vh6Zwvh" target="_blank">Home</a>
+- <a href="https://ibb.co/5YGzSs5" target="_blank">Login/Register</a>
+- <a href="https://ibb.co/2qsSbpB" target="_blank">My Profile</a>
+- <a href="https://ibb.co/rFmqZzf" target="_blank">Edit Profile</a>
+- <a href="https://ibb.co/fvxbKqL" target="_blank">Mentors</a>
+- <a href="https://ibb.co/qdCMVmk" target="_blank">Pair programmers</a>
+- <a href="https://ibb.co/YTjCRWr" target="_blank">User Profile</a>
+- <a href="https://ibb.co/WF8CBTB" target="_blank">Messages</a>
 
 # Features
 ## Existing Features
