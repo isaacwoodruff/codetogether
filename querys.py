@@ -123,8 +123,8 @@ def create_new_user_query(form):
         'first_name': "",
         'last_name': "",
         'description': "",
-        'avatar': "",
-        'about': "",
+        'avatar': "https://image.flaticon.com/icons/svg/843/843331.svg",
+        'about': "Write a bit about yourself here",
         'expertise': "",
         'looking_to': "",
         "contact": {
