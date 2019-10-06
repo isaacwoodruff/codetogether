@@ -7,7 +7,7 @@ from messages import *
 def index():
     current_user_object = connect_current_user_to_database(current_user)
     return render_template('index.html', current_session_user=current_user_object)
-    
+
 @app.route('/<dev_type>/search/<expertise_tag>', methods=["GET","POST"])
 @login_required
 def expertise_search(dev_type, expertise_tag):
@@ -21,30 +21,26 @@ def expertise_search(dev_type, expertise_tag):
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
         expertise = request.form.get('expertise').lower().strip().split(",")
-        users = mentor_search_query(name, expertise)
-        return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+        if title == "Mentors":
+            if name == [""] and expertise == [""]:
+                users = all_mentors_query()
+                return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+            else:
+                users = mentor_search_query(name, expertise)
+                return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+        else:
+            if name == [""] and expertise == [""]:
+                users = all_pair_programmers_query()
+                return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
+            else:
+                users = pair_programmers_search_query(name, expertise)
+                return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
     return render_template('search.html', users=users, current_session_user=current_user_object, title=dev_type, expertise_tag=expertise_tag)
     
-@app.route('/mentors/search', methods=["GET","POST"])
-@login_required
-def mentors_search():
-    current_user_object = connect_current_user_to_database(current_user)
-    if request.method == 'POST':
-        name = request.form.get('name').lower().split(' ', 2)
-        expertise = request.form.get('expertise').lower().strip().split(",")
-        if name == [""] and expertise == [""]:
-            users = all_mentors_query()
-            return url_for('mentors')
-        else:
-            users = mentor_search_query(name, expertise)
-            return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
-    return render_template('search.html', current_session_user=current_user_object, title="Mentors")
-
 @app.route('/mentors', methods=["GET","POST"])
 @login_required
 def mentors():
     current_user_object = connect_current_user_to_database(current_user)
-    title = "Mentors"
     users = all_mentors_query()
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
@@ -55,39 +51,23 @@ def mentors():
         else:
             users = mentor_search_query(name, expertise)
             return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
-    return render_template('search.html', users=users, current_session_user=current_user_object, title=title)
+    return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
 
-@app.route('/pair_programmers/search', methods=["GET","POST"])
-@login_required
-def pair_programmers_search():
-    current_user_object = connect_current_user_to_database(current_user)
-    if request.method == 'POST':
-        name = request.form.get('name').lower().split(' ', 2)
-        expertise = request.form.get('expertise').lower().strip().split(",")
-        if name == [""] and expertise == [""]:
-            users = all_pair_programmers_query()
-            return url_for('pair_programmers')
-        else:
-            users = pair_programmers_search_query(name, expertise)
-            return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
-    return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
-    
 @app.route('/pair_programmers', methods=["GET","POST"])
 @login_required
 def pair_programmers():
     current_user_object = connect_current_user_to_database(current_user)
-    title = "Pair Programmers"
     users = all_pair_programmers_query()
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
         expertise = request.form.get('expertise').lower().strip().split(",")
         if name == [""] and expertise == [""]:
             users = all_pair_programmers_query()
-            return url_for('pair_programmers')
+            return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
         else:
             users = pair_programmers_search_query(name, expertise)
             return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
-    return render_template('search.html', users=users, current_session_user=current_user_object, title=title)
+    return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
 
 @app.route('/edit_profile')
 @login_required
