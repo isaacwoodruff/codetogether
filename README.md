@@ -1,6 +1,6 @@
-# Code Together
+# [Code Together](http://code-together-platform.herokuapp.com/)
 
-Code Together was created as a free platform to connect software developers with mentors, and pair programmers to learn, help, and build together.
+[Code Together](http://code-together-platform.herokuapp.com/) was created as a free platform to connect software developers with mentors, and pair programmers to learn, help, and build together.
 
 ## Table of Contents
 
@@ -21,7 +21,7 @@ Code Together was created as a free platform to connect software developers with
 
 6. [Deployment](#deployment)
     - [Heroku Deployment](#heroku-deployment)
-    - [Local Deployment](#how-to-deploy-this-project-locally)
+    - [Local Deployment](#local-deployment)
 
 7. [Credits](#credits)
 
@@ -30,7 +30,7 @@ Code Together was created as a free platform to connect software developers with
 The goal of this project is to create a web application to connect software developers with mentors, and pair programmers. It's aim was to be built in Python in conjunction with the Flask framework, and MongoDB to enable users to create, read, update and delete (CRUD).
 
 ### User Goals
-The target audience for this project is:
+The target audience for this project are:
 - Developers looking to find a mentor
 - Developers looking to find a pair programming partner
 - Developers looking to start mentoring other developers
@@ -42,7 +42,7 @@ The user goals are to have:
 - The ability to contact another developer
 
 ## User Stories
-A user of Code Together expects to:
+A user of [Code Together](http://code-together-platform.herokuapp.com/) expects to:
 - Be able to register, login, and logout
 - Have their own profile which they can create, read, update or delete
 - Search through the database for all mentors and pair programmers
