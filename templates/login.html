@@ -15,7 +15,9 @@
             </div>
             {% if title == "Login" %}
                 <button class="btn btn-default" type="submit">Login</button>
-                <a href="{{ url_for('register') }}" class="btn btn-default">Register</a>
+                {% if not current_user.is_authenticated %}
+                    <a href="{{ url_for('register') }}" class="btn btn-default">Register</a>
+                {% endif %}
             {% elif title == "Are you sure?" %}
                 <button class="btn btn-default red" type="submit">Delete Profile</button>
             {% else %}
@@ -25,7 +27,11 @@
         
         {% if get_flashed_messages() %}
             {% if current_user.is_authenticated %}
-                {{ current_session_user.first_name.capitalize() }}
+                {% if current_session_user.first_name == "" %}
+                    <span>User</span>
+                {% else %}
+                    {{ current_session_user.first_name.capitalize() }}
+                {% endif %}
             {% endif %}
             {{ get_flashed_messages()[0] }}
         {% endif %}
