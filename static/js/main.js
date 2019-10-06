@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	
+	// Hide or show user profile information
 	$('.tab-link').click(function(){
 		var tab_id = $(this).attr('data-tab');
 
@@ -14,5 +15,7 @@ $(document).ready(function(){
 	
 	$(".dropdown-trigger").dropdown({coverTrigger: false});
 	
-    $('.fixed-action-btn').floatingActionButton();
+    $('select').formSelect();
+    
+    $('textarea').characterCounter();
 })
