@@ -32,7 +32,9 @@ def mentors_search():
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
         expertise = request.form.get('expertise').lower().strip().split(",")
-        if name == "" and expertise == [""]:
+        print(name)
+        print(expertise)
+        if name == [""] and expertise == [""]:
             users = all_mentors_query()
             return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
         else:
@@ -55,7 +57,7 @@ def pair_programmers_search():
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
         expertise = request.form.get('expertise').lower().strip().split(",")
-        if name == "" and expertise == [""]:
+        if name == [""] and expertise == [""]:
             users = all_pair_programmers_query()
             return render_template('search.html', current_session_user=current_user_object, title="Pair Programmers")
         else:
