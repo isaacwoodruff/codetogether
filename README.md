@@ -20,8 +20,8 @@
 5. [Testing](#testing)
 
 6. [Deployment](#deployment)
-    - [Heroku Deployment](#heroku-deployment)
     - [Local Deployment](#local-deployment)
+    - [Heroku Deployment](#heroku-deployment)
 
 7. [Credits](#credits)
 
@@ -194,9 +194,105 @@ This is the JSON structure of the users collection:
 # Testing
 
 # Deployment
-## Heroku Deployment
-
 ## Local Deployment
+To run this project locally these must be installed in your IDE:
+- [Git](https://git-scm.com/downloads)
+- [Python 3](https://www.python.org/downloads/)
+- [PIP](https://pip.pypa.io/en/stable/installing/)
+- [MongoDB](https://www.mongodb.com/download-center)
+
+### Instructions
+
+1. Follow [this link](https://github.com/isaacwoodruff/codetogether) to the main page of the [isaacwoodruff/code-together](https://github.com/isaacwoodruff/codetogether) repository.
+2. On the right side of the page click the green **Clone or download** button.
+3. In the '**Clone with HTTPS**' section, copy the URL for the repository.
+4. Open your **terminal/Git Bash**.
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL that was copied in Step 3 or copy and paste this command:
+
+    `git clone https://github.com/isaacwoodruff/codetogether.git`
+    
+7. Press **Enter**.
+8. You can either 
+    - Create a virtual environment and create environment variables for **IP**, **PORT**, **MONGO_URI**, and **SECRET_KEY**.
+    - Or edit the app.py file like the following variables:
+        ```
+        'IP', '127.0.0.1'
+        ```
+        ```
+        'PORT', '5000'
+        ```
+        ```
+        'SECRET_KEY', '<somethingsecret>'
+        ```
+        ```
+        'MONGO_URI', 'mongodb+srv://<username>:<password>@<cluster_name>-ocous.mongodb.net/<database_name>?retryWrites=true&w=majority'
+        ```
+9. Install all required modules from requirements.txt with the command:
+    ```
+    pip3 install -r requirements.txt.
+    ```
+10. Now you can run the website with the command:
+    ```
+    python3 app.py
+    ```
+11. You can now access the website at **http://127.0.0.1:5000**
+
+## Heroku Deployment
+1. In your terminal create a **requirements.txt** file using the command:
+    ```
+    pip freeze > requirements.txt
+    ```
+
+2. Then create a **Procfile** with the terminal command:
+    ```
+    echo web: python3 app.py > Procfile
+    ```
+
+3. Commit your changes and push to GitHub with the terminal commands:
+
+    ```Note: set your GitHub remote to origin if not done already```
+    
+    ```
+    git add requirements.txt Procfile
+    ```
+    
+    ```
+    git commit -m "Your commit message"
+    ```
+    
+    ```
+    git push origin
+    ```
+    
+
+3. Go to <a href="https://heroku.com/" target="_blank">Heroku</a> and create a new app by clicking the **New** button in your dashboard. Set your app name and set the region to whichever is closest to you.
+
+4. In the heroku dashboard of your application, click on **Deploy** then **Deployment method** and select GitHub.
+
+5. Click confirm in the pop up window to link the heroku app to the GitHub repository.
+
+6. In the heroku dashboard of your application, click on **Settings** then **Reveal Config Vars** and set the following:
+
+| Key | Value |
+ --- | ---
+IP | 0.0.0.0
+PORT | 5000
+MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-ocous.mongodb.net/<database_name>?retryWrites=true&w=majority`
+SECRET_KEY | `<somethingsecret>`
+DEBUG | FALSE
+
+To get your MONGO_URI please reference the <a href="https://docs.atlas.mongodb.com/" target="_blank">MongoDB Atlas documentation</a>.
+
+7. In the heroku dashboard of your app you can either click **Deploy** or enable **Automatic Deploys** in the **Automatic Deployment** section.
+
+8. To pick your branch for manual deployment go to the **Manual Deploy** section and set the branch to **master** then click **Deploy Branch**.
+
+9. Your site is now successfully deployed at:
+    ```
+    your-heroku-app-name.herokuapp.com
+    ```
+
 
 # Credits
 ### Content
