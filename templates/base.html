@@ -20,6 +20,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('mentors') }}">Mentors</a></li>
                     <li><a href="{{ url_for('pair_programmers') }}">Pair Programmers</a></li>
+                    <!-- If the user is logged in the it shows a different navbar -->
                     {% if current_user.is_authenticated %}
                         <ul id="nav-dropdown" class="dropdown-content">
                             <li><a href="{{ url_for('user_profile', user_id=current_session_user._id) }}">Profile</a></li>
@@ -37,6 +38,7 @@
         <ul class="max-width-200 sidenav" id="mobile-nav">
             <li><a href="{{ url_for('mentors') }}">Mentors</a></li>
             <li><a href="{{ url_for('pair_programmers') }}">Pair Programmers</a></li>
+            <!-- If the user is logged in the it shows a different navbar -->
             {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('user_profile', user_id=current_session_user._id) }}">Profile</a></li>
                 <li><a href="#!">Messages</a></li>

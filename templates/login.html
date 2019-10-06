@@ -13,6 +13,7 @@
             <div class="form-group">
                 <label class="control-label" for="password">Password</label> {{ form.password }}
             </div>
+            <!--Display different buttons depending on what view is being used-->
             {% if title == "Login" %}
                 <button class="btn btn-default" type="submit">Login</button>
                 {% if not current_user.is_authenticated %}
@@ -25,6 +26,8 @@
             {% endif %}
         </form>
         
+        <!--Displays relevent messages in relation to the form, if the current
+            user has no name in the database default to "User"-->
         {% if get_flashed_messages() %}
             {% if current_user.is_authenticated %}
                 {% if current_session_user.first_name == "" %}

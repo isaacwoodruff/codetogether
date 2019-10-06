@@ -2,6 +2,7 @@
 
 <div class="row center">
     <h3>{{ title }}</h3>
+    <!--This will submit form data to one of 2 views depending on the current rendered one-->
     <form action="
         {% if title == 'Mentors' %}
             {{ url_for('mentors') }}
@@ -28,6 +29,7 @@
 </div>
 
 <div class="row center">
+    <!--Creates list of user profiles-->
     {% for user in users %}
     <div class="valign-wrapper hoverable padding-10 border-radius-15 margin-top-50 col s12 l6">
         <div class="col s12 m3">
@@ -36,6 +38,7 @@
         <div class="col s12 m9 profile-preview left-align">
             <a href="{{ url_for('user_profile', user_id=user._id) }}"><h5>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h5></a>
             <p class="truncate">{{ user.about }}</p>
+            <!--If the user has expertise then create a tag link per expertise-->
             {% if user.expertise != [""] %}
                 {% for item in user.expertise[-5:] %}
                     <a class="waves-effect waves-light btn-small margin-bottom-10" href="{{ url_for('expertise_search', dev_type=title, expertise_tag=item ) }}">{{ item }}</a>

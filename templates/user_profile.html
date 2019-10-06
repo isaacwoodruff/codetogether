@@ -6,6 +6,7 @@
     <p>{{ user.description.title() }}</p>
 </div>
 
+<!--This is the small screen profile nav-->
 <div class="row hide-on-med-and-up center z-depth-3 tabs-nav">
     <ul id="profile-dropdown" class="dropdown-content z-depth-5 border-radius-15">
         <li>
@@ -29,6 +30,7 @@
     </div>
 </div>
 
+<!--This is the medium and large screen profile nav-->
 <div class="row hide-on-small-only center z-depth-3 tabs-nav">
     <div class="col s4 tab-link-heading tab-link cursor-pointer" data-tab="profile">
         <h5>Profile</h5>
@@ -71,6 +73,7 @@
         <div class="row center margin-top-50">
             <div class="col s12">
                 <ul>
+                    <!--If the user has expertise then create a list item per expertise-->
                     {% if user.expertise != [""] %}
                         {% for item in user.expertise %}
                             <li class="waves-effect waves-light btn-small margin-bottom-10">{{ item.capitalize() }}</li>
@@ -93,6 +96,7 @@
             </div>
         </div>
     </div>
+    <!--If this is the current users profile then display a button to edit profile-->
     {% if current_user.is_authenticated and user._id == current_session_user._id %}
         <a href="{{ url_for('edit_profile') }}" class="btn waves-effect waves-light btn-large margin-top-50">Edit Profile</a>
     {% endif %}
