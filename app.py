@@ -32,22 +32,31 @@ def mentors_search():
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
         expertise = request.form.get('expertise').lower().strip().split(",")
-        if name == "" and expertise == [""]:
+        if name == [""] and expertise == [""]:
             users = all_mentors_query()
-            return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+            return url_for('mentors')
         else:
             users = mentor_search_query(name, expertise)
             return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
     return render_template('search.html', current_session_user=current_user_object, title="Mentors")
-    
-@app.route('/mentors')
+
+@app.route('/mentors', methods=["GET","POST"])
 @login_required
 def mentors():
     current_user_object = connect_current_user_to_database(current_user)
     title = "Mentors"
     users = all_mentors_query()
+    if request.method == 'POST':
+        name = request.form.get('name').lower().split(' ', 2)
+        expertise = request.form.get('expertise').lower().strip().split(",")
+        if name == [""] and expertise == [""]:
+            users = all_mentors_query()
+            return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
+        else:
+            users = mentor_search_query(name, expertise)
+            return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
     return render_template('search.html', users=users, current_session_user=current_user_object, title=title)
-    
+
 @app.route('/pair_programmers/search', methods=["GET","POST"])
 @login_required
 def pair_programmers_search():
@@ -55,9 +64,9 @@ def pair_programmers_search():
     if request.method == 'POST':
         name = request.form.get('name').lower().split(' ', 2)
         expertise = request.form.get('expertise').lower().strip().split(",")
-        if name == "" and expertise == [""]:
+        if name == [""] and expertise == [""]:
             users = all_pair_programmers_query()
-            return render_template('search.html', current_session_user=current_user_object, title="Pair Programmers")
+            return url_for('pair_programmers')
         else:
             users = pair_programmers_search_query(name, expertise)
             return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")

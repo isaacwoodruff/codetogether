@@ -4,7 +4,7 @@
     <h3>{{ title }}</h3>
     <form action="
         {% if title == 'Mentors' %}
-            {{ url_for('mentors_search') }}
+            {{ url_for('mentors') }}
         {% else %}
             {{ url_for('pair_programmers_search') }}
         {% endif %}
