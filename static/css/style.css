@@ -48,9 +48,17 @@ footer a {
     display: inline-block;
 }
 
+.display-block {
+    display: block;
+}
+
 .profile-preview {
     overflow: hidden;
     max-height: 130px;
+}
+
+.back-btn-wrapper {
+    text-align: left;
 }
 
 #about {
@@ -108,6 +116,10 @@ footer a {
     nav .brand-logo {
         left: 35%;
     }
+    
+    .back-btn-wrapper {
+        text-align: center;
+    }
 }
 
 
@@ -118,6 +130,10 @@ footer a {
     
     .profile-preview h5 {
         text-align: center;
+    }
+    
+    .back-btn {
+        margin-bottom: 50px;
     }
 }
 

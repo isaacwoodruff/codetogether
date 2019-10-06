@@ -1,16 +1,21 @@
 {% extends 'base.html' %} {% block content %}
     
 <div class="row center">
-    <img src="{{ user.avatar }}" class="z-depth-4 circle img-max-width-256">
-    <h4>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h4>
-    <p>{{ user.description.title() }}</p>
+    <div class="col s12 m6 l3 display-block back-btn-wrapper">
+        <a class="btn waves-effect waves-light back-btn"><i class="material-icons left">arrow_back</i>Go Back</a>
+    </div>
+    <div class="col s12">
+        <img src="{{ user.avatar }}" class="z-depth-4 circle img-max-width-256">
+        <h4>{{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}</h4>
+        <p>{{ user.description.title() }}</p>
+    </div>
 </div>
 
 <!--This is the small screen profile nav-->
 <div class="row hide-on-med-and-up center z-depth-3 tabs-nav">
     <ul id="profile-dropdown" class="dropdown-content z-depth-5 border-radius-15">
         <li>
-            <div class="col s12 tab-link-heading tab-link current cursor-pointer" data-tab="profile">
+            <div class="col s12 tab-link-heading tab-link cursor-pointer" data-tab="profile">
                 <h5>Profile</h5>
             </div>
         </li>
@@ -32,7 +37,7 @@
 
 <!--This is the medium and large screen profile nav-->
 <div class="row hide-on-small-only center z-depth-3 tabs-nav">
-    <div class="col s4 tab-link-heading tab-link cursor-pointer" data-tab="profile">
+    <div class="col s4 tab-link-heading tab-link current cursor-pointer" data-tab="profile">
         <h5>Profile</h5>
     </div>
     <div class="col s4 tab-link-heading tab-link cursor-pointer" data-tab="expertise">

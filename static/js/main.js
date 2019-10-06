@@ -11,6 +11,10 @@ $(document).ready(function(){
 		$("#"+tab_id).addClass('current');
 	});
 	
+	$('.back-btn').click(function(){
+		window.history.back();
+	});
+	
 	$('.sidenav').sidenav({edge:'right'});
 	
 	$(".dropdown-trigger").dropdown({coverTrigger: false});
