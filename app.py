@@ -15,9 +15,9 @@ def expertise_search(dev_type, expertise_tag):
     name = ['']
     expertise_tag = [expertise_tag]
     if dev_type == "Mentors":
-        users = user_search_query(name, expertise, dev_type)
+        users = user_search_query(name, expertise_tag, dev_type)
     if dev_type == "Pair Programmers":
-        users = user_search_query(name, expertise, dev_type)
+        users = user_search_query(name, expertise_tag, dev_type)
     return render_template('search.html', users=users, current_session_user=current_user_object, title=dev_type, expertise_tag=expertise_tag)
     
 @app.route('/mentors', methods=["GET","POST"])
