@@ -18,23 +18,6 @@ def expertise_search(dev_type, expertise_tag):
         users = mentor_search_query(name, expertise_tag)
     if dev_type == "Pair Programmers":
         users = pair_programmers_search_query(name, expertise_tag)
-    if request.method == 'POST':
-        name = request.form.get('name').lower().split(' ', 2)
-        expertise = request.form.get('expertise').lower().strip().split(",")
-        if title == "Mentors":
-            if name == [""] and expertise == [""]:
-                users = all_mentors_query()
-                return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
-            else:
-                users = mentor_search_query(name, expertise)
-                return render_template('search.html', users=users, current_session_user=current_user_object, title="Mentors")
-        else:
-            if name == [""] and expertise == [""]:
-                users = all_pair_programmers_query()
-                return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
-            else:
-                users = pair_programmers_search_query(name, expertise)
-                return render_template('search.html', users=users, current_session_user=current_user_object, title="Pair Programmers")
     return render_template('search.html', users=users, current_session_user=current_user_object, title=dev_type, expertise_tag=expertise_tag)
     
 @app.route('/mentors', methods=["GET","POST"])
