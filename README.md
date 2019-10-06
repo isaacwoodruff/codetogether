@@ -199,3 +199,29 @@ This is the JSON structure of the users collection:
 ## Local Deployment
 
 # Credits
+### Content
+- All written content was created by the developer
+
+### Media
+- Some avatars used were from these sources
+    - <a href="https://www.flaticon.com/free-icon/man_180665" target="_blank">Flaticon-hipster</a>
+    - <a href="https://www.flaticon.com/free-icon/hacker_843331" target="_blank">Flaticon-hacker</a>
+- The favicon for this website is from <a href="https://www.flaticon.com/free-icon/code_25185" target="_blank">Flaticon-code</a>
+- The index page uses images from these sources 
+    - <a href="https://www.freepik.com/free-vector/connected-concept-illustration_5568958.htm">Freepik-image-1</a>
+    - <a href="https://www.freepik.com/premium-vector/online-training-flat-design-man-s-character-is-sitting-desk-studying-online-with-online-course-online-examination-concept_4852682.htm">Freepik-image-2</a>
+    - <a href="https://www.freepik.com/free-vector/managers-looking-chart-monitor_4530296.htm" target="_blank">Freepik-image-3</a>
+    - <a href="https://www.freepik.com/free-vector/communication-flat-icon_4167276.htm" target="_blank">Freepik-image-4</a>
+- The GitHub logo in the footer was sourced from <a href="https://www.flaticon.com/free-icon/github-logo_37318" target="_blank">FlatIcon-GitHub</a>
+- All wireframe images were created by the developer and uploaded to <a href="https://imgbb.com" target="_blank">imgBB</a>
+
+### Code
+- The nav bar and mobile nav bar were taken from <a href="https://materializecss.com/" target="_blank">Materialize</a> and modified to suit the website
+- The tabbed content structure on the user profiles was taken from a <a href="https://codepen.io/cssjockey/pen/jGzuK" target="_blank">CodePen</a> by Mohit Aneja and modified heavily
+- The login system was adapted from <a href="https://boh717.github.io/post/flask-login-and-mongodb/" target="_blank">How to use MongoDB (and PyMongo) with Flask-Login</a>
+- The messaging functionality was created from parts of this article <a href="https://codeburst.io/building-your-first-chat-application-using-flask-in-7-minutes-f98de4adfa5d" target="_blank">Building your first Chat Application using Flask in 7 minutes</a>
+
+### Acknowledgements
+- The <a href="https://imgbb.com" target="_blank">flask-login</a>, and <a href="https://imgbb.com" target="_blank">flask-socketio</a> docs were invaluable during the development process
+- <a href="https://materializecss.com/" target="_blank">Materialize</a> sped up the development process considerably
+- Thanks to <a href="https://github.com/aaronsnig501" target="_blank">Aaron Sinnott</a> for his suggestions throughout the project
