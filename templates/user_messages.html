@@ -1,16 +1,22 @@
 {% extends 'base.html' %} {% block content %}
-
-    <h3>No messages yet...</h3>
-    <div class="message_holder"></div>
     
-    <form action="" method="POST">
-        <input type="text" class="hide" value="{{ current_session_user.first_name }}" />
-        <input type="text" class="message" placeholder="Type your message here" required/>
-        <button class="btn waves-effect waves-light btn-large">Send</button>
-    </form>
+<div class="row">
+    <div class="col l2"></div>
+    <div class="col s12 l8">
+        <div id="messages-wrapper">
+            <h3>No messages yet...</h3>
+            <div class="message_holder"></div>
+        </div>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
-    <script src="{{url_for('static', filename='js/messages.js')}}"></script>
+        <div id="messages-form">
+            <form action="" method="POST">
+                <input type="text" class="hide" value="{{ current_session_user.first_name }}" />
+                <input type="text" class="message" placeholder="Type your message here" required/>
+                <button class="btn waves-effect waves-light btn-large">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="col l2"></div>
+</div>
     
 {% endblock %}

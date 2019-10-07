@@ -120,6 +120,16 @@ footer a {
     overflow: hidden;
 }
 
+#messages-form {
+    position: absolute;
+    top: 80vh;
+}
+
+#messages-wrapper {
+    height: 60vh;
+    overflow: scroll;
+}
+
 @media only screen and (max-width: 440px) {
     /* Pull site name/logo to the left more on smaller screens */
     nav .brand-logo {
