@@ -7,7 +7,7 @@ $(document).ready(function() {
         socket.emit('server message', {
             data: 'User Connected'
         })
-        $('form').on('submit', function(e) {
+        $('#messages-form').on('submit', function(e) {
             e.preventDefault()
             socket.emit('server message', {
                 user_name: $('input.hide').val(),

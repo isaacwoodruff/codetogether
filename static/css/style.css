@@ -120,7 +120,7 @@ footer a {
     overflow: hidden;
 }
 
-#messages-form {
+#messages-form-wrapper {
     position: absolute;
     top: 80vh;
 }
