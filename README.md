@@ -112,10 +112,14 @@ These wireframes were created using <a href="https://balsamiq.com/" target="_bla
     - Expertise
 - A user can click on an expertise tag and it will automatically search for everyone with that expertise e.g Python
 
+##### Global Chat
+- Users can chat with each other in this global chatroom
+- The messages aren't saved so they will disapear once you close the window
+
 ## Features Left To Implement
 ##### Messaging
 - The ability for users to contact each other within the website through the medium of:
-    - Text messaging
+    - Private text messaging
     - Screen share
     - Multiplayer live code share
 
@@ -208,7 +212,7 @@ A testing matrix was created using google spreadsheets. It details all of the te
 
 # Deployment
 ## Local Deployment
-To run this project locally these must be installed in your IDE:
+To run this project locally the following must be installed in your IDE:
 - [Git](https://git-scm.com/downloads)
 - [Python 3](https://www.python.org/downloads/)
 - [PIP](https://pip.pypa.io/en/stable/installing/)
