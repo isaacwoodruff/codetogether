@@ -24,7 +24,7 @@
                     {% if current_user.is_authenticated %}
                         <ul id="nav-dropdown" class="dropdown-content">
                             <li><a href="{{ url_for('user_profile', user_id=current_session_user._id) }}">Profile</a></li>
-                            <li><a href="#!">Messages</a></li>
+                            <li><a href="{{ url_for('user_messages') }}">Messages</a></li>
                             <li><a href="{{ url_for('logout') }}">Logout</a></li>
                         </ul>
                         <li><a class="dropdown-trigger" href="#!" data-target="nav-dropdown"><i id="user-profile-icon" class="material-icons center">person_pin</i></a></li>
@@ -41,7 +41,7 @@
             <!-- If the user is logged in the it shows a different navbar -->
             {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('user_profile', user_id=current_session_user._id) }}">Profile</a></li>
-                <li><a href="#!">Messages</a></li>
+                <li><a href="{{ url_for('user_messages') }}">Messages</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% else %}
                 <li><a href="{{ url_for('login') }}">Login/Register</a></li>
