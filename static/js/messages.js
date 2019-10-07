@@ -19,10 +19,12 @@ $(document).ready(function() {
 
     socket.on('client message', function(msg) {
         if (typeof msg.user_name !== 'undefined') {
-            $('h3').remove()
+            $('#messages-wrapper h3').remove()
             $('div.message_holder').append('<div><h6>' + msg.user_name + ": " + msg.message + '</h6></div>')
-            // Scroll to the bottom when a new message is received or sent
-            messageBox.scrollTop = messageBox.scrollHeight;
+            // Scroll to the bottom when a new message is received or sent, if there is a scroll bar
+            if (messageBox != null){
+                messageBox.scrollTop = messageBox.scrollHeight;
+            }
         }
     })
 })

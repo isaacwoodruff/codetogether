@@ -1,18 +1,23 @@
 {% extends 'base.html' %} {% block content %}
     
-<div class="row">
+<div class="row center">
+    <h3>{{ title }}</h3>
     <div class="col l2"></div>
     <div class="col s12 l8">
-        <div id="messages-wrapper">
+        <div id="messages-wrapper" class="col s12 left-align">
             <h3>No messages yet...</h3>
             <div class="message_holder"></div>
         </div>
     
-        <div id="messages-form">
+        <div class="col s12 l6" id="messages-form">
             <form action="" method="POST">
-                <input type="text" class="hide" value="{{ current_session_user.first_name }}" />
-                <input type="text" class="message" placeholder="Type your message here" required/>
-                <button class="btn waves-effect waves-light btn-large">Send</button>
+                <div class="col s6">
+                    <input type="text" class="hide" value="{{ current_session_user.first_name }}" />
+                    <input type="text" class="message" placeholder="Type your message here" required/>
+                </div>
+                <div class="col s6">
+                    <button class="btn waves-effect waves-light btn-large">Send</button>
+                </div>
             </form>
         </div>
     </div>
